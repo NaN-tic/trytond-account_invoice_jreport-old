@@ -33,7 +33,7 @@ setup(name='trytonzz_account_invoice_jreport',
     author='Zikzakmedia SL',
     author_email='zikzak@zikzakmedia.com',
     url='http://www.zikzakmedia.com',
-    download_url="https://bitbucket.org/zikzakmedia/trytond-account_invoice_jreport",
+    download_url="https://bitbucket.org/trytonspain/trytond-account_invoice_jreport",
     package_dir={'trytond.modules.account_invoice_jreport': '.'},
     packages=[
         'trytond.modules.account_invoice_jreport',
