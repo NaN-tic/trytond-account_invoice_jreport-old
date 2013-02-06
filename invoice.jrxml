@@ -3,13 +3,41 @@
 	<property name="TRYTON_RELATIONS" value="[&apos;lines&apos;]"/>
 	<property name="ireport.zoom" value="1.1000000000000019"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="27"/>
+	<property name="ireport.y" value="96"/>
+	<subDataset name="taxes">
+		<parameter name="INVOICE_ID" class="java.lang.Long"/>
+		<parameter name="REWIND" class="java.lang.Object">
+			<parameterDescription><![CDATA[]]></parameterDescription>
+			<defaultValueExpression><![CDATA[$P{REPORT_DATA_SOURCE}.moveFirst()]]></defaultValueExpression>
+		</parameter>
+		<queryString language="xPath">
+			<![CDATA[]]>
+		</queryString>
+		<field name="invoice_id" class="java.lang.Long">
+			<fieldDescription><![CDATA[/data/record/id]]></fieldDescription>
+		</field>
+        <field name="party-lang" class="java.lang.String">
+            <fieldDescription><![CDATA[/data/record/party-party/lang-lang/code-code]]></fieldDescription>
+        </field>
+        <field name="taxes-base" class="java.lang.String">
+            <fieldDescription><![CDATA[/data/record/taxes-taxes/base-base]]></fieldDescription>
+        </field>
+        <field name="taxes-amount" class="java.lang.String">
+            <fieldDescription><![CDATA[/data/record/taxes-taxes/amount-amount]]></fieldDescription>
+        </field>
+        <field name="taxes-description" class="java.lang.String">
+            <fieldDescription><![CDATA[/data/record/taxes-taxes/description-description]]></fieldDescription>
+        </field>
+        <variable name="L" class="java.util.Locale">
+            <variableExpression><![CDATA[$F{party-lang} != null && $F{party-lang}.length() == 5 ? new Locale($F{party-lang}.substring(0,2)) : ( $F{party-lang} != null && $F{party-lang}.length() == 2 ? new Locale($F{party-lang}.substring(0,2)) : 'en')]]></variableExpression>
+            <initialValueExpression><![CDATA[$F{party-lang} != null && $F{party-lang}.length() == 5 ? new Locale($F{party-lang}.substring(0,2)) : ( $F{party-lang} != null && $F{party-lang}.length() == 2 ? new Locale($F{party-lang}.substring(0,2)) : 'en' )]]></initialValueExpression>
+        </variable>
+	</subDataset>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["/"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="DUE_DS" class="java.lang.Object"/>
 	<parameter name="TAXES_DS" class="java.lang.Object"/>
-	<parameter name="INVOICE_ID" class="java.lang.Long"/>
 	<queryString language="xPath">
 		<![CDATA[]]>
 	</queryString>
@@ -147,6 +175,15 @@
 	</field>
 	<field name="untaxed_amount-untaxed_amount" class="java.lang.String">
 		<fieldDescription><![CDATA[/data/record/untaxed_amount-untaxed_amount]]></fieldDescription>
+	</field>
+	<field name="taxes-base" class="java.lang.String">
+		<fieldDescription><![CDATA[/data/record/taxes-taxes/base-base]]></fieldDescription>
+	</field>
+	<field name="taxes-amount" class="java.lang.String">
+		<fieldDescription><![CDATA[/data/record/taxes-taxes/amount-amount]]></fieldDescription>
+	</field>
+	<field name="taxes-description" class="java.lang.String">
+		<fieldDescription><![CDATA[/data/record/taxes-taxes/description-description]]></fieldDescription>
 	</field>
 	<variable name="L" class="java.util.Locale">
 		<variableExpression><![CDATA[$F{party-lang} != null && $F{party-lang}.length() == 5 ? new Locale($F{party-lang}.substring(0,2)) : ( $F{party-lang} != null && $F{party-lang}.length() == 2 ? new Locale($F{party-lang}.substring(0,2)) : 'en')]]></variableExpression>
@@ -380,14 +417,70 @@
 					</textElement>
 					<textFieldExpression><![CDATA[tr($V{L},"Payment Type")+": "+$F{payment_type-name}]]></textFieldExpression>
 				</textField>
-				<subreport isUsingCache="true" runToBottom="false">
-					<reportElement stretchType="RelativeToBandHeight" x="10" y="55" width="255" height="38"/>
-					<subreportParameter name="INVOICE_ID">
-						<subreportParameterExpression><![CDATA[$F{id}]]></subreportParameterExpression>
-					</subreportParameter>
-					<dataSourceExpression><![CDATA[$P{TAXES_DS}]]></dataSourceExpression>
-					<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "invoice_tax.jrxml"]]></subreportExpression>
-				</subreport>
+				<componentElement>
+					<reportElement key="table 1" x="18" y="59" width="89" height="25">
+						<property name="TRYTON_RELATIONS" value="taxes"/>
+					</reportElement>
+					<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+						<datasetRun subDataset="taxes">
+							<datasetParameter name="INVOICE_ID">
+								<datasetParameterExpression><![CDATA[$F{id}]]></datasetParameterExpression>
+							</datasetParameter>
+							<dataSourceExpression><![CDATA[$P{TAXES_DS}]]></dataSourceExpression>
+						</datasetRun>
+						<jr:column width="52">
+							<jr:tableHeader height="0" rowSpan="1"/>
+							<jr:tableFooter height="0" rowSpan="1"/>
+							<jr:columnHeader height="12" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="50" height="12"/>
+									<textFieldExpression><![CDATA[tr($V{L},"Tax")]]></textFieldExpression>
+								</textField>
+							</jr:columnHeader>
+							<jr:columnFooter height="0" rowSpan="1"/>
+							<jr:detailCell height="12" rowSpan="1">
+								<textField isStretchWithOverflow="true" pattern="#,##0.00;-#,##0.00">
+									<reportElement x="0" y="0" width="50" height="12"/>
+									<textFieldExpression><![CDATA[$F{taxes-description}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="51">
+							<jr:tableHeader height="0" rowSpan="1"/>
+							<jr:tableFooter height="0" rowSpan="1"/>
+							<jr:columnHeader height="12" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="50" height="12"/>
+									<textFieldExpression><![CDATA[tr($V{L},"Base")]]></textFieldExpression>
+								</textField>
+							</jr:columnHeader>
+							<jr:columnFooter height="0" rowSpan="1"/>
+							<jr:detailCell height="12" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="50" height="12"/>
+									<textFieldExpression><![CDATA[$F{taxes-base}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="51">
+							<jr:tableHeader height="0" rowSpan="1"/>
+							<jr:tableFooter height="0" rowSpan="1"/>
+							<jr:columnHeader height="12" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="50" height="12"/>
+									<textFieldExpression><![CDATA[tr($V{L},"Total")]]></textFieldExpression>
+								</textField>
+							</jr:columnHeader>
+							<jr:columnFooter height="0" rowSpan="1"/>
+							<jr:detailCell height="12" rowSpan="1">
+								<textField isStretchWithOverflow="true" pattern="#,##0.00;-#,##0.00">
+									<reportElement x="0" y="0" width="51" height="12"/>
+									<textFieldExpression><![CDATA[$F{taxes-amount}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:table>
+				</componentElement>
 			</band>
 		</groupFooter>
 	</group>
