@@ -10,20 +10,6 @@ The COPYRIGHT file at the top level of this repository contains the full copyrig
             <field name="report">account_invoice_jreport/invoice.jrxml</field>
             <field name="style"></field>
         </record>
-        <record model="ir.action.report" id="report_account_invoice_due">
-            <field name="name">Account Invoice Due</field>
-            <field name="model">account.invoice</field>
-            <field name="report_name">jasper_reports.invoice_due</field>
-            <field name="report">account_invoice_jreport/invoice_due.jrxml</field>
-            <field name="extension">pdf</field>
-        </record>
-        <record model="ir.action.report" id="report_account_invoice_tax">
-            <field name="name">Account Invoice Tax</field>
-            <field name="model">account.invoice</field>
-            <field name="report_name">jasper_reports.invoice_tax</field>
-            <field name="report">account_invoice_jreport/invoice_tax.jrxml</field>
-            <field name="extension">pdf</field>
-        </record>
     </data>
 </tryton>
 
