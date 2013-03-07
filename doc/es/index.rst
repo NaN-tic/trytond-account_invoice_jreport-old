@@ -5,8 +5,8 @@ Informe de facturación Jasper
 El módulo **Informe de facturación Jasper** reemplaza el informe de facturación
 por defecto por un informe de Jasper.
 
-Módulos que dependen
-====================
+Módulos de los que depende
+==========================
 
 Instalados
 ----------
