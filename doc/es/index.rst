@@ -7,18 +7,3 @@ por defecto por un informe de Jasper.
 
 Una vez instale este módulo, deberá revisar que todos los terceros dispongan de
 un idioma por defecto (no sea vacío). 
-
-Dependencias
-------------
-
-* `Logo de empresa`_
-* Facturación_
-* `Descuentos en facturas`_
-* `Tipo de pago`_
-* `Informes Jasper`_
-
-.. _Logo de empresa: ../company_logo/index.html
-.. _Facturación: ../account_invoice/index.html
-.. _Descuentos en facturas: ../account_invoice_discount/index.html
-.. _Tipo de pago: ../account_payment_type/index.html
-.. _Informes Jasper: ../jasper_reports/index.html
