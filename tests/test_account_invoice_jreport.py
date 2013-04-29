@@ -12,8 +12,7 @@ if os.path.isdir(DIR):
 
 import unittest
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import test_view, test_depends
-from trytond.transaction import Transaction
+from trytond.tests.test_tryton import test_depends
 
 
 class AccountInvoiceJreportTestCase(unittest.TestCase):
