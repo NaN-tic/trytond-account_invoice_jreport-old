@@ -60,7 +60,7 @@ msgstr "Impost"
 
 msgctxt "jasper:account.invoice:"
 msgid "Tax Vat"
-msgstr "Base imposts"
+msgstr "Base impost"
 
 msgctxt "jasper:account.invoice:"
 msgid "Total"
