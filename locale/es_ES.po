@@ -56,11 +56,11 @@ msgstr "Referencia"
 
 msgctxt "jasper:account.invoice:"
 msgid "Tax"
-msgstr "Imposts"
+msgstr "Impuesto"
 
 msgctxt "jasper:account.invoice:"
 msgid "Tax Vat"
-msgstr "Base impuestos"
+msgstr "Base impuesto"
 
 msgctxt "jasper:account.invoice:"
 msgid "Total"
