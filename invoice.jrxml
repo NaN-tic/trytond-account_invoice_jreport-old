@@ -181,7 +181,7 @@
 		<groupExpression><![CDATA[$F{id}]]></groupExpression>
 		<groupHeader>
 			<band height="267">
-				<textField>
+				<textField isStretchWithOverflow="true">
 					<reportElement x="305" y="142" width="240" height="39"/>
 					<textElement>
 						<font size="9" isBold="true"/>
