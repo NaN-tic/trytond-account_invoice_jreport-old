@@ -48,7 +48,7 @@ msgstr "Qt."
 
 msgctxt "jasper:account.invoice:"
 msgid "Quotation"
-msgstr "Presuposto"
+msgstr "Presupuesto"
 
 msgctxt "jasper:account.invoice:"
 msgid "Reference"
