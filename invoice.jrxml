@@ -3,7 +3,7 @@
 	<property name="TRYTON_RELATIONS" value="[&apos;lines&apos;]"/>
 	<property name="ireport.zoom" value="1.1000000000000019"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="60"/>
+	<property name="ireport.y" value="0"/>
 	<subDataset name="taxes">
 		<parameter name="INVOICE_ID" class="java.lang.Long"/>
 		<parameter name="REWIND" class="java.lang.Object">
@@ -318,7 +318,7 @@
 			</band>
 		</groupHeader>
 		<groupFooter>
-			<band height="235" splitType="Prevent">
+			<band height="162" splitType="Prevent">
 				<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
 					<reportElement x="434" y="30" width="95" height="14"/>
 					<textElement textAlignment="Right">
@@ -387,7 +387,7 @@
 					</textElement>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-					<reportElement x="12" y="184" width="528" height="36" isRemoveLineWhenBlank="true"/>
+					<reportElement x="12" y="121" width="528" height="36" isRemoveLineWhenBlank="true"/>
 					<textElement>
 						<font size="9"/>
 					</textElement>
