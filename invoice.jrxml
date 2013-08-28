@@ -173,6 +173,9 @@
 	<field name="untaxed_amount-untaxed_amount" class="java.lang.Number">
 		<fieldDescription><![CDATA[/data/record/untaxed_amount-untaxed_amount]]></fieldDescription>
 	</field>
+	<field name="note-note" class="java.lang.String">
+		<fieldDescription><![CDATA[/data/record/payment_type-payment_type/note-note]]></fieldDescription>
+	</field>
 	<variable name="L" class="java.util.Locale">
 		<variableExpression><![CDATA[$F{party-lang} != null && $F{party-lang}.length() == 5 ? new Locale($F{party-lang}.substring(0,2)) : ( $F{party-lang} != null && $F{party-lang}.length() == 2 ? new Locale($F{party-lang}.substring(0,2)) : 'en')]]></variableExpression>
 		<initialValueExpression><![CDATA[$F{party-lang} != null && $F{party-lang}.length() == 5 ? new Locale($F{party-lang}.substring(0,2)) : ( $F{party-lang} != null && $F{party-lang}.length() == 2 ? new Locale($F{party-lang}.substring(0,2)) : 'en' )]]></initialValueExpression>
@@ -380,12 +383,6 @@
 					</textElement>
 					<textFieldExpression class="java.lang.String"><![CDATA[$F{symbol-symbol}]]></textFieldExpression>
 				</textField>
-				<textField isBlankWhenNull="true">
-					<reportElement x="275" y="92" width="264" height="12"/>
-					<textElement>
-						<font size="9" isBold="true"/>
-					</textElement>
-				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 					<reportElement x="12" y="121" width="528" height="36" isRemoveLineWhenBlank="true"/>
 					<textElement>
@@ -397,13 +394,13 @@
 					<reportElement x="10" y="25" width="530" height="1"/>
 				</line>
 				<textField>
-					<reportElement x="275" y="77" width="265" height="12">
+					<reportElement x="275" y="77" width="265" height="30">
 						<printWhenExpression><![CDATA[$F{payment_type-name} != '']]></printWhenExpression>
 					</reportElement>
 					<textElement>
 						<font size="9" isBold="false"/>
 					</textElement>
-					<textFieldExpression class="java.lang.String"><![CDATA[tr($V{L},"Payment Type")+": "+$F{payment_type-name}]]></textFieldExpression>
+					<textFieldExpression class="java.lang.String"><![CDATA[tr($V{L},"Payment Type")+": "+$F{payment_type-name}+"\n"+$F{note-note}]]></textFieldExpression>
 				</textField>
 				<componentElement>
 					<reportElement key="table 1" x="18" y="59" width="168" height="30">
