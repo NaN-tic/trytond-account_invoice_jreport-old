@@ -29,8 +29,8 @@
 			<fieldDescription><![CDATA[/data/record/taxes-taxes/description-description]]></fieldDescription>
 		</field>
 		<variable name="L" class="java.util.Locale">
-			<variableExpression><![CDATA[$F{party-lang} != null && $F{party-lang}.length() == 5 ? new Locale($F{party-lang}.substring(0,2)) : ( $F{party-lang} != null && $F{party-lang}.length() == 2 ? new Locale($F{party-lang}.substring(0,2)) : 'en')]]></variableExpression>
-			<initialValueExpression><![CDATA[$F{party-lang} != null && $F{party-lang}.length() == 5 ? new Locale($F{party-lang}.substring(0,2)) : ( $F{party-lang} != null && $F{party-lang}.length() == 2 ? new Locale($F{party-lang}.substring(0,2)) : 'en' )]]></initialValueExpression>
+			<variableExpression><![CDATA[$F{party-lang} != null && $F{party-lang}.length() == 5 ? new Locale($F{party-lang}.substring(0,2)) : ( $F{party-lang} != null && $F{party-lang}.length() == 2 ? new Locale($F{party-lang}.substring(0,2)) : new Locale('en_US'))]]></variableExpression>
+			<initialValueExpression><![CDATA[$F{party-lang} != null && $F{party-lang}.length() == 5 ? new Locale($F{party-lang}.substring(0,2)) : ( $F{party-lang} != null && $F{party-lang}.length() == 2 ? new Locale($F{party-lang}.substring(0,2)) : new Locale('en_US'))]]></initialValueExpression>
 		</variable>
 	</subDataset>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
