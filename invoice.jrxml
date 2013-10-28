@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="invoice" language="i18ngroovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<property name="TRYTON_RELATIONS" value="[&apos;lines&apos;]"/>
-	<property name="ireport.zoom" value="1.2100000000000026"/>
+	<property name="ireport.zoom" value="1.6105100000000039"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="138"/>
 	<subDataset name="taxes">
 		<parameter name="INVOICE_ID" class="java.lang.Long"/>
 		<parameter name="REWIND" class="java.lang.Object">
@@ -155,7 +155,7 @@
 	<field name="line-amount" class="java.lang.Number">
 		<fieldDescription><![CDATA[/data/record/lines-lines/amount-amount]]></fieldDescription>
 	</field>
-	<field name="line-discount" class="java.lang.String">
+	<field name="line-discount" class="java.lang.Number">
 		<fieldDescription><![CDATA[/data/record/lines-lines/discount-discount]]></fieldDescription>
 	</field>
 	<field name="line-tax-name" class="java.lang.String">
@@ -175,6 +175,9 @@
 	</field>
 	<field name="note-note" class="java.lang.String">
 		<fieldDescription><![CDATA[/data/record/payment_type-payment_type/note-note]]></fieldDescription>
+	</field>
+	<field name="gross_unit_price-gross_unit_price" class="java.lang.String">
+		<fieldDescription><![CDATA[/data/record/lines-lines/gross_unit_price-gross_unit_price]]></fieldDescription>
 	</field>
 	<variable name="L" class="java.util.Locale">
 		<variableExpression><![CDATA[$F{party-lang} != null && $F{party-lang}.length() == 5 ? new Locale($F{party-lang}.substring(0,2)) : ( $F{party-lang} != null && $F{party-lang}.length() == 2 ? new Locale($F{party-lang}.substring(0,2)) : 'en')]]></variableExpression>
@@ -477,7 +480,7 @@
 				<textElement textAlignment="Right">
 					<font size="9"/>
 				</textElement>
-				<textFieldExpression class="java.lang.Number"><![CDATA[$F{line-unit_price}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.Number"><![CDATA[$F{gross_unit_price-gross_unit_price} ? $F{gross_unit_price-gross_unit_price} : $F{line-unit_price}]]></textFieldExpression>
 			</textField>
 			<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
 				<reportElement x="490" y="2" width="50" height="12"/>
@@ -487,11 +490,11 @@
 				<textFieldExpression class="java.lang.Number"><![CDATA[$F{line-amount}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="466" y="2" width="21" height="12"/>
+				<reportElement x="466" y="2" width="25" height="12"/>
 				<textElement textAlignment="Left">
 					<font size="9"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{line-discount} ? "-"+$F{line-discount}+"%" : ""]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{line-discount} ? "-"+ (int)Double.valueOf($F{line-discount}*100).doubleValue()+"%" : ""]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="16" y="2" width="40" height="12"/>
