@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="invoice" language="i18ngroovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<property name="TRYTON_RELATIONS" value="[&apos;lines&apos;]"/>
-	<property name="ireport.zoom" value="1.6105100000000039"/>
+	<property name="ireport.zoom" value="1.1000000000000025"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="138"/>
+	<property name="ireport.y" value="0"/>
 	<subDataset name="taxes">
 		<parameter name="INVOICE_ID" class="java.lang.Long"/>
 		<parameter name="REWIND" class="java.lang.Object">
@@ -17,7 +17,7 @@
 			<fieldDescription><![CDATA[/data/record/id]]></fieldDescription>
 		</field>
 		<field name="party-lang" class="java.lang.String">
-			<fieldDescription><![CDATA[/data/record/party-party/lang-lang/code-code]]></fieldDescription>
+			<fieldDescription><![CDATA[/data/record/party_lang-party_lang]]></fieldDescription>
 		</field>
 		<field name="taxes-base" class="java.lang.Number">
 			<fieldDescription><![CDATA[/data/record/taxes-taxes/base-base]]></fieldDescription>
@@ -99,7 +99,7 @@
 		<fieldDescription><![CDATA[/data/record/party-party/addresses-addresses/country-country/name-name]]></fieldDescription>
 	</field>
 	<field name="party-lang" class="java.lang.String">
-		<fieldDescription><![CDATA[/data/record/party-party/lang-lang/code-code]]></fieldDescription>
+		<fieldDescription><![CDATA[/data/record/party_lang-party_lang]]></fieldDescription>
 	</field>
 	<field name="party-vat_number" class="java.lang.String">
 		<fieldDescription><![CDATA[/data/record/party-party/vat_number-vat_number]]></fieldDescription>
@@ -180,8 +180,8 @@
 		<fieldDescription><![CDATA[/data/record/lines-lines/gross_unit_price-gross_unit_price]]></fieldDescription>
 	</field>
 	<variable name="L" class="java.util.Locale">
-		<variableExpression><![CDATA[$F{party-lang} != null && $F{party-lang}.length() == 5 ? new Locale($F{party-lang}.substring(0,2)) : ( $F{party-lang} != null && $F{party-lang}.length() == 2 ? new Locale($F{party-lang}.substring(0,2)) : 'en')]]></variableExpression>
-		<initialValueExpression><![CDATA[$F{party-lang} != null && $F{party-lang}.length() == 5 ? new Locale($F{party-lang}.substring(0,2)) : ( $F{party-lang} != null && $F{party-lang}.length() == 2 ? new Locale($F{party-lang}.substring(0,2)) : 'en' )]]></initialValueExpression>
+		<variableExpression><![CDATA[$F{party-lang} != null && $F{party-lang}.length() == 5 ? new Locale($F{party-lang}.substring(0,2)) : ( $F{party-lang} != null && $F{party-lang}.length() == 2 ? new Locale($F{party-lang}.substring(0,2)) : 'en_US')]]></variableExpression>
+		<initialValueExpression><![CDATA[$F{party-lang} != null && $F{party-lang}.length() == 5 ? new Locale($F{party-lang}.substring(0,2)) : ( $F{party-lang} != null && $F{party-lang}.length() == 2 ? new Locale($F{party-lang}.substring(0,2)) : 'en_US' )]]></initialValueExpression>
 	</variable>
 	<group name="Invoice" isStartNewPage="true" isResetPageNumber="true">
 		<groupExpression><![CDATA[$F{id}]]></groupExpression>
