@@ -372,7 +372,7 @@
 					<textFieldExpression><![CDATA[tr($V{L},"Untaxed")]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement x="369" y="59" width="171" height="12" uuid="f98b73c2-40f5-4951-a74c-3c41ad8c3e4d">
+					<reportElement x="341" y="59" width="199" height="12" uuid="f98b73c2-40f5-4951-a74c-3c41ad8c3e4d">
 						<printWhenExpression><![CDATA[$F{payment_term-name} != '']]></printWhenExpression>
 					</reportElement>
 					<textElement>
@@ -401,7 +401,7 @@
 					<reportElement x="10" y="25" width="530" height="1" uuid="3b2441e0-d347-40a9-877e-5c359698a821"/>
 				</line>
 				<textField>
-					<reportElement x="369" y="74" width="171" height="30" uuid="cf0d63cf-238d-4158-9a90-d9f3202fa7a3">
+					<reportElement x="341" y="74" width="199" height="30" uuid="cf0d63cf-238d-4158-9a90-d9f3202fa7a3">
 						<printWhenExpression><![CDATA[$F{payment_type-name} != '']]></printWhenExpression>
 					</reportElement>
 					<textElement>
@@ -501,7 +501,7 @@
 					</jr:table>
 				</componentElement>
 				<componentElement>
-					<reportElement key="table2" x="183" y="71" width="177" height="50" uuid="2f90e824-d446-42fb-9825-dd28077c2519">
+					<reportElement key="table2" x="187" y="71" width="140" height="50" uuid="2f90e824-d446-42fb-9825-dd28077c2519">
 						<property name="TRYTON_RELATIONS" value="lines_to_pay"/>
 						<printWhenExpression><![CDATA[$F{maturity_date-maturity_date}.length() > 0]]></printWhenExpression>
 					</reportElement>
@@ -509,23 +509,23 @@
 						<datasetRun subDataset="lines_to_pay" uuid="8293224d-610b-47c7-ac51-b8b8b3ac7ba7">
 							<dataSourceExpression><![CDATA[$P{DUE_DS}]]></dataSourceExpression>
 						</datasetRun>
-						<jr:column width="84" uuid="c193e098-f837-4ffa-b449-cd871e55276f">
+						<jr:column width="70" uuid="c193e098-f837-4ffa-b449-cd871e55276f">
 							<jr:tableHeader height="1" rowSpan="1"/>
 							<jr:columnHeader height="12" rowSpan="1">
 								<textField>
-									<reportElement x="2" y="0" width="80" height="11" uuid="a752f346-1c00-4974-80ea-4149aaa0354b"/>
+									<reportElement x="2" y="0" width="68" height="11" uuid="a752f346-1c00-4974-80ea-4149aaa0354b"/>
 									<textElement>
 										<font size="9"/>
 									</textElement>
 									<textFieldExpression><![CDATA[tr($V{L},"Maturity date")]]></textFieldExpression>
 								</textField>
 								<line>
-									<reportElement x="2" y="11" width="82" height="1" uuid="c3fa28a3-8697-4b7b-a142-675a2b6efe57"/>
+									<reportElement x="2" y="11" width="68" height="1" uuid="c3fa28a3-8697-4b7b-a142-675a2b6efe57"/>
 								</line>
 							</jr:columnHeader>
 							<jr:detailCell height="14" rowSpan="1">
 								<textField pattern="dd/MM/yyyy">
-									<reportElement x="2" y="0" width="80" height="12" uuid="061ee816-155d-4d40-8e20-2bb0b6411481"/>
+									<reportElement x="2" y="0" width="68" height="12" uuid="061ee816-155d-4d40-8e20-2bb0b6411481"/>
 									<textElement>
 										<font size="9"/>
 									</textElement>
@@ -533,23 +533,23 @@
 								</textField>
 							</jr:detailCell>
 						</jr:column>
-						<jr:column width="93" uuid="104674c8-1dc8-42c8-84b0-8bfa99b239df">
+						<jr:column width="70" uuid="104674c8-1dc8-42c8-84b0-8bfa99b239df">
 							<jr:tableHeader height="1" rowSpan="1"/>
 							<jr:columnHeader height="12" rowSpan="1">
 								<textField>
-									<reportElement x="0" y="0" width="89" height="11" uuid="4eb2a9a4-134f-4e05-b52a-77615b88ee5f"/>
+									<reportElement x="0" y="0" width="70" height="11" uuid="4eb2a9a4-134f-4e05-b52a-77615b88ee5f"/>
 									<textElement>
 										<font size="9"/>
 									</textElement>
 									<textFieldExpression><![CDATA[tr($V{L},"Debit")]]></textFieldExpression>
 								</textField>
 								<line>
-									<reportElement x="0" y="11" width="89" height="1" uuid="75cde5ed-b790-478c-b1e9-adbbd2310cce"/>
+									<reportElement x="0" y="11" width="70" height="1" uuid="75cde5ed-b790-478c-b1e9-adbbd2310cce"/>
 								</line>
 							</jr:columnHeader>
 							<jr:detailCell height="14" rowSpan="1">
 								<textField pattern="#,##0.00;-#,##0.00">
-									<reportElement x="0" y="0" width="89" height="12" uuid="ad68598f-930b-492f-ab79-b8fae2b98d0c"/>
+									<reportElement x="0" y="0" width="70" height="12" uuid="ad68598f-930b-492f-ab79-b8fae2b98d0c"/>
 									<textElement>
 										<font size="9"/>
 									</textElement>
@@ -560,7 +560,7 @@
 					</jr:table>
 				</componentElement>
 				<textField>
-					<reportElement x="185" y="59" width="177" height="12" uuid="f4277fed-faf6-4521-8fd7-24496c595084">
+					<reportElement x="189" y="59" width="140" height="12" uuid="f4277fed-faf6-4521-8fd7-24496c595084">
 						<printWhenExpression><![CDATA[$F{maturity_date-maturity_date}.length() > 0]]></printWhenExpression>
 					</reportElement>
 					<textElement>
@@ -569,7 +569,7 @@
 					<textFieldExpression><![CDATA[tr($V{L},"Due dates")]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="10" y="59" width="177" height="12" uuid="8d47cb48-94f8-4578-9e20-bc4568942364">
+					<reportElement x="10" y="59" width="166" height="12" uuid="8d47cb48-94f8-4578-9e20-bc4568942364">
 						<printWhenExpression><![CDATA[$F{maturity_date-maturity_date}.length() > 0]]></printWhenExpression>
 					</reportElement>
 					<textElement>
