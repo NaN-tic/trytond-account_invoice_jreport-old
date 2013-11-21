@@ -341,7 +341,7 @@
 					<textFieldExpression><![CDATA[tr($V{L},"Untaxed")]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement x="275" y="64" width="265" height="12" uuid="f98b73c2-40f5-4951-a74c-3c41ad8c3e4d">
+					<reportElement x="369" y="59" width="171" height="12" uuid="f98b73c2-40f5-4951-a74c-3c41ad8c3e4d">
 						<printWhenExpression><![CDATA[$F{payment_term-name} != '']]></printWhenExpression>
 					</reportElement>
 					<textElement>
@@ -370,7 +370,7 @@
 					<reportElement x="10" y="25" width="530" height="1" uuid="3b2441e0-d347-40a9-877e-5c359698a821"/>
 				</line>
 				<textField>
-					<reportElement x="275" y="77" width="265" height="30" uuid="cf0d63cf-238d-4158-9a90-d9f3202fa7a3">
+					<reportElement x="369" y="74" width="171" height="30" uuid="cf0d63cf-238d-4158-9a90-d9f3202fa7a3">
 						<printWhenExpression><![CDATA[$F{payment_type-name} != '']]></printWhenExpression>
 					</reportElement>
 					<textElement>
