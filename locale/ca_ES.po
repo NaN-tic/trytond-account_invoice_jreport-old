@@ -77,3 +77,20 @@ msgstr "CIF/NIF"
 msgctxt "jasper:account.invoice:"
 msgid "VAT"
 msgstr "CIF/NIF"
+
+msgctxt "jasper:account.invoice:"
+msgid "Taxes"
+msgstr "Impostos"
+
+msgctxt "jasper:account.invoice:"
+msgid "Due dates"
+msgstr "Venciments"
+
+msgctxt "jasper:account.invoice:"
+msgid "Maturity date"
+msgstr "Venciment"
+
+msgctxt "jasper:account.invoice:"
+msgid "Debit"
+msgstr "Deure"
+
