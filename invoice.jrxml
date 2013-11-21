@@ -448,7 +448,9 @@
 	<pageHeader>
 		<band height="126">
 			<image>
-				<reportElement x="10" y="8" width="157" height="100" uuid="8c1ee22b-4b4b-442c-bf74-5ee50f661100"/>
+				<reportElement x="10" y="8" width="157" height="100" uuid="8c1ee22b-4b4b-442c-bf74-5ee50f661100">
+					<printWhenExpression><![CDATA[$F{company-logo}.length()>0]]></printWhenExpression>
+				</reportElement>
 				<imageExpression><![CDATA[$F{company-logo}]]></imageExpression>
 			</image>
 			<textField>
