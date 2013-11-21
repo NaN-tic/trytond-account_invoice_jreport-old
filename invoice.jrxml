@@ -5,7 +5,6 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<subDataset name="taxes" uuid="5221ae81-f459-44b2-ac92-4babe070fc67">
-		<parameter name="INVOICE_ID" class="java.lang.Long"/>
 		<parameter name="REWIND" class="java.lang.Object">
 			<parameterDescription><![CDATA[]]></parameterDescription>
 			<defaultValueExpression><![CDATA[$P{REPORT_DATA_SOURCE}.moveFirst()]]></defaultValueExpression>
@@ -34,9 +33,6 @@
 		</variable>
 	</subDataset>
 	<subDataset name="lines_to_pay" uuid="2574814a-7d85-4740-b981-ff0baa86c908">
-		<parameter name="INVOICE_ID" class="java.lang.Long">
-			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
-		</parameter>
 		<parameter name="REWIND" class="java.lang.Object">
 			<parameterDescription><![CDATA[]]></parameterDescription>
 			<defaultValueExpression><![CDATA[$P{REPORT_DATA_SOURCE}.moveFirst()]]></defaultValueExpression>
@@ -415,9 +411,6 @@
 					</reportElement>
 					<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 						<datasetRun subDataset="taxes" uuid="d8ab3f36-e783-4348-b91d-994987cbb219">
-							<datasetParameter name="INVOICE_ID">
-								<datasetParameterExpression><![CDATA[$F{id}]]></datasetParameterExpression>
-							</datasetParameter>
 							<dataSourceExpression><![CDATA[$P{TAXES_DS}]]></dataSourceExpression>
 						</datasetRun>
 						<jr:column width="52" uuid="a5f33de6-26e1-4ed9-a249-228c92c3097c">
