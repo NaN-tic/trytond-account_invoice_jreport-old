@@ -410,7 +410,7 @@
 					<textFieldExpression><![CDATA[tr($V{L},"Payment Type")+": "+$F{payment_type-name}+"\n"+$F{note-note}]]></textFieldExpression>
 				</textField>
 				<componentElement>
-					<reportElement key="table 1" x="8" y="59" width="168" height="30" uuid="9bb63471-5005-4919-a92e-5b494fa8fd09">
+					<reportElement key="table 1" x="8" y="71" width="168" height="50" uuid="9bb63471-5005-4919-a92e-5b494fa8fd09">
 						<property name="TRYTON_RELATIONS" value="taxes"/>
 					</reportElement>
 					<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
@@ -511,16 +511,16 @@
 						</datasetRun>
 						<jr:column width="84" uuid="c193e098-f837-4ffa-b449-cd871e55276f">
 							<jr:tableHeader height="1" rowSpan="1"/>
-							<jr:columnHeader height="14" rowSpan="1">
+							<jr:columnHeader height="12" rowSpan="1">
 								<textField>
-									<reportElement x="2" y="0" width="80" height="12" uuid="a752f346-1c00-4974-80ea-4149aaa0354b"/>
+									<reportElement x="2" y="0" width="80" height="11" uuid="a752f346-1c00-4974-80ea-4149aaa0354b"/>
 									<textElement>
 										<font size="9"/>
 									</textElement>
 									<textFieldExpression><![CDATA[tr($V{L},"Maturity date")]]></textFieldExpression>
 								</textField>
 								<line>
-									<reportElement x="2" y="12" width="82" height="1" uuid="c3fa28a3-8697-4b7b-a142-675a2b6efe57"/>
+									<reportElement x="2" y="11" width="82" height="1" uuid="c3fa28a3-8697-4b7b-a142-675a2b6efe57"/>
 								</line>
 							</jr:columnHeader>
 							<jr:detailCell height="14" rowSpan="1">
@@ -535,16 +535,16 @@
 						</jr:column>
 						<jr:column width="93" uuid="104674c8-1dc8-42c8-84b0-8bfa99b239df">
 							<jr:tableHeader height="1" rowSpan="1"/>
-							<jr:columnHeader height="14" rowSpan="1">
+							<jr:columnHeader height="12" rowSpan="1">
 								<textField>
-									<reportElement x="0" y="0" width="89" height="12" uuid="4eb2a9a4-134f-4e05-b52a-77615b88ee5f"/>
+									<reportElement x="0" y="0" width="89" height="11" uuid="4eb2a9a4-134f-4e05-b52a-77615b88ee5f"/>
 									<textElement>
 										<font size="9"/>
 									</textElement>
 									<textFieldExpression><![CDATA[tr($V{L},"Debit")]]></textFieldExpression>
 								</textField>
 								<line>
-									<reportElement x="0" y="12" width="89" height="1" uuid="75cde5ed-b790-478c-b1e9-adbbd2310cce"/>
+									<reportElement x="0" y="11" width="89" height="1" uuid="75cde5ed-b790-478c-b1e9-adbbd2310cce"/>
 								</line>
 							</jr:columnHeader>
 							<jr:detailCell height="14" rowSpan="1">
@@ -567,6 +567,15 @@
 						<font size="9" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[tr($V{L},"Due dates")]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="10" y="59" width="177" height="12" uuid="8d47cb48-94f8-4578-9e20-bc4568942364">
+						<printWhenExpression><![CDATA[$F{maturity_date-maturity_date}.length() > 0]]></printWhenExpression>
+					</reportElement>
+					<textElement>
+						<font size="9" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[tr($V{L},"Taxes")]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupFooter>
