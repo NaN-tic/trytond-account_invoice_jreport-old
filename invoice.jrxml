@@ -379,7 +379,7 @@
 					<textFieldExpression><![CDATA[tr($V{L},"Payment Type")+": "+$F{payment_type-name}+"\n"+$F{note-note}]]></textFieldExpression>
 				</textField>
 				<componentElement>
-					<reportElement key="table 1" x="18" y="59" width="168" height="30" uuid="9bb63471-5005-4919-a92e-5b494fa8fd09">
+					<reportElement key="table 1" x="8" y="59" width="168" height="30" uuid="9bb63471-5005-4919-a92e-5b494fa8fd09">
 						<property name="TRYTON_RELATIONS" value="taxes"/>
 					</reportElement>
 					<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
@@ -394,14 +394,23 @@
 							<jr:tableFooter height="0" rowSpan="1"/>
 							<jr:columnHeader height="12" rowSpan="1">
 								<textField>
-									<reportElement x="0" y="0" width="50" height="12" uuid="f14e6e60-b01e-44c0-a405-a723df581b23"/>
+									<reportElement x="2" y="0" width="50" height="11" uuid="f14e6e60-b01e-44c0-a405-a723df581b23"/>
+									<textElement>
+										<font size="9"/>
+									</textElement>
 									<textFieldExpression><![CDATA[tr($V{L},"Tax")]]></textFieldExpression>
 								</textField>
+								<line>
+									<reportElement x="2" y="11" width="50" height="1" uuid="3b4e5c4b-9a24-41d3-bdff-9fc99f5376d0"/>
+								</line>
 							</jr:columnHeader>
 							<jr:columnFooter height="0" rowSpan="1"/>
 							<jr:detailCell height="12" rowSpan="1">
 								<textField isStretchWithOverflow="true" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
-									<reportElement x="0" y="0" width="50" height="12" uuid="7424f07c-807f-441e-b21b-21c3af2f075a"/>
+									<reportElement x="2" y="0" width="50" height="12" uuid="7424f07c-807f-441e-b21b-21c3af2f075a"/>
+									<textElement>
+										<font size="9"/>
+									</textElement>
 									<textFieldExpression><![CDATA[$F{taxes-description}]]></textFieldExpression>
 								</textField>
 							</jr:detailCell>
@@ -411,14 +420,23 @@
 							<jr:tableFooter height="0" rowSpan="1"/>
 							<jr:columnHeader height="12" rowSpan="1">
 								<textField>
-									<reportElement x="0" y="0" width="64" height="12" uuid="4316886b-ddfd-41b3-88f7-38845a77c0ef"/>
+									<reportElement x="0" y="0" width="64" height="11" uuid="4316886b-ddfd-41b3-88f7-38845a77c0ef"/>
+									<textElement>
+										<font size="9"/>
+									</textElement>
 									<textFieldExpression><![CDATA[tr($V{L},"Base")]]></textFieldExpression>
 								</textField>
+								<line>
+									<reportElement x="0" y="11" width="64" height="1" uuid="57840f6f-a3b8-4f4c-ac34-bdbfa8e0119c"/>
+								</line>
 							</jr:columnHeader>
 							<jr:columnFooter height="0" rowSpan="1"/>
 							<jr:detailCell height="12" rowSpan="1">
 								<textField pattern="#,##0.00" isBlankWhenNull="true">
 									<reportElement x="0" y="0" width="64" height="12" uuid="95ba9998-be52-47ee-80d1-b65a1bba8c25"/>
+									<textElement>
+										<font size="9"/>
+									</textElement>
 									<textFieldExpression><![CDATA[$F{taxes-base}]]></textFieldExpression>
 								</textField>
 							</jr:detailCell>
@@ -428,14 +446,23 @@
 							<jr:tableFooter height="0" rowSpan="1"/>
 							<jr:columnHeader height="12" rowSpan="1">
 								<textField>
-									<reportElement x="0" y="0" width="50" height="12" uuid="225026aa-06f5-483f-b93c-765523f9f64c"/>
+									<reportElement x="0" y="0" width="49" height="11" uuid="225026aa-06f5-483f-b93c-765523f9f64c"/>
+									<textElement>
+										<font size="9"/>
+									</textElement>
 									<textFieldExpression><![CDATA[tr($V{L},"Total")]]></textFieldExpression>
 								</textField>
+								<line>
+									<reportElement x="0" y="11" width="51" height="1" uuid="665e8775-a1c2-432e-a2fe-c87efca04902"/>
+								</line>
 							</jr:columnHeader>
 							<jr:columnFooter height="0" rowSpan="1"/>
 							<jr:detailCell height="12" rowSpan="1">
 								<textField isStretchWithOverflow="true" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
 									<reportElement x="0" y="0" width="51" height="12" uuid="41e83f81-8ac9-4ff3-bcdb-02e3991c9389"/>
+									<textElement>
+										<font size="9"/>
+									</textElement>
 									<textFieldExpression><![CDATA[$F{taxes-amount}]]></textFieldExpression>
 								</textField>
 							</jr:detailCell>
