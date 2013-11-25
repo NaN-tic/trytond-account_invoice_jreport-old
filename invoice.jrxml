@@ -43,9 +43,6 @@
 		<field name="party-lang" class="java.lang.String">
 			<fieldDescription><![CDATA[/data/record/party_lang-party_lang]]></fieldDescription>
 		</field>
-		<field name="origin-origin" class="java.lang.String">
-			<fieldDescription><![CDATA[/data/record/lines_to_pay-lines_to_pay/origin-origin]]></fieldDescription>
-		</field>
 		<field name="maturity_date-maturity_date" class="java.util.Date">
 			<fieldDescription><![CDATA[/data/record/lines_to_pay-lines_to_pay/maturity_date-maturity_date]]></fieldDescription>
 		</field>
