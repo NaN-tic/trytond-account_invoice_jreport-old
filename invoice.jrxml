@@ -254,7 +254,7 @@
 					<textFieldExpression><![CDATA[$F{type-type} .equals("out_credit_note") ? tr($V{L},"Credit Note")+" Nº "+$F{number-number} : $F{state-state}.equals("validated") ? tr($V{L},"Pro-forma") : $F{state-state}.equals("draft") ? tr($V{L},"Quotation") : tr($V{L},"Invoice")+" Nº "+$F{number-number}]]></textFieldExpression>
 				</textField>
 				<textField isBlankWhenNull="true">
-					<reportElement x="57" y="75" width="234" height="12" uuid="bcb43a8d-520e-44e8-8cb8-92664ef9dd0d">
+					<reportElement x="65" y="75" width="225" height="12" uuid="bcb43a8d-520e-44e8-8cb8-92664ef9dd0d">
 						<printWhenExpression><![CDATA[$F{invoice_date-invoice_date} != '']]></printWhenExpression>
 					</reportElement>
 					<textElement>
@@ -266,7 +266,7 @@
 					<reportElement x="10" y="130" width="530" height="1" uuid="28e865b0-5cd4-498b-bb03-0d8fcb786a54"/>
 				</line>
 				<textField>
-					<reportElement x="57" y="46" width="234" height="12" uuid="cb1d5d38-ba52-42f3-9314-1e44e614a39e"/>
+					<reportElement x="65" y="46" width="225" height="12" uuid="cb1d5d38-ba52-42f3-9314-1e44e614a39e"/>
 					<textElement>
 						<font fontName="SansSerif" size="9" isBold="false"/>
 					</textElement>
@@ -280,7 +280,7 @@
 					<textFieldExpression><![CDATA[tr($V{L},"Tax Vat")]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="10" y="46" width="44" height="12" uuid="25c04a14-94c8-4cba-9c3d-3c9d90941873">
+					<reportElement x="10" y="46" width="60" height="12" uuid="25c04a14-94c8-4cba-9c3d-3c9d90941873">
 						<printWhenExpression><![CDATA[$F{reference-reference} != '']]></printWhenExpression>
 					</reportElement>
 					<textElement>
@@ -289,14 +289,14 @@
 					<textFieldExpression><![CDATA[tr($V{L},"Reference")+":"]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="57" y="60" width="234" height="12" uuid="e13c33aa-af2c-487d-8071-8f0889709f04"/>
+					<reportElement x="65" y="60" width="225" height="12" uuid="e13c33aa-af2c-487d-8071-8f0889709f04"/>
 					<textElement textAlignment="Left">
 						<font size="9"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{party-vat_number}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="10" y="75" width="44" height="12" uuid="dd409cc4-d552-476f-9753-3ea295c5686f">
+					<reportElement x="10" y="75" width="60" height="12" uuid="dd409cc4-d552-476f-9753-3ea295c5686f">
 						<printWhenExpression><![CDATA[$F{invoice_date-invoice_date} != '']]></printWhenExpression>
 					</reportElement>
 					<textElement>
@@ -305,7 +305,7 @@
 					<textFieldExpression><![CDATA[tr($V{L},"Date")+":"]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="10" y="60" width="44" height="12" uuid="8bc1a99d-8748-4ba7-983a-b6c33e6e96ae"/>
+					<reportElement x="10" y="60" width="60" height="12" uuid="8bc1a99d-8748-4ba7-983a-b6c33e6e96ae"/>
 					<textElement>
 						<font size="9" isBold="true"/>
 					</textElement>
