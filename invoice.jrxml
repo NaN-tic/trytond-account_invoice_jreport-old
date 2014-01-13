@@ -334,7 +334,7 @@
 					<textElement textAlignment="Left">
 						<font size="9" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{untaxed_amount-untaxed_amount} ? $F{line-amount} : 0]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{untaxed_amount-untaxed_amount} ? $F{untaxed_amount-untaxed_amount} : 0]]></textFieldExpression>
 				</textField>
 				<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="false">
 					<reportElement x="255" y="30" width="98" height="14" uuid="b45d62d6-f732-4783-8678-80d9c3111e44"/>
