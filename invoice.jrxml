@@ -203,6 +203,9 @@
 	<field name="maturity_date-maturity_date" class="java.lang.String">
 		<fieldDescription><![CDATA[/data/record/lines_to_pay-lines_to_pay/maturity_date-maturity_date]]></fieldDescription>
 	</field>
+	<field name="invoice_qty-invoice_qty" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[/data/record/company-company/invoice_qty-invoice_qty]]></fieldDescription>
+	</field>
 	<variable name="L" class="java.util.Locale">
 		<variableExpression><![CDATA[$F{party-lang} != null && $F{party-lang}.length() == 5 ? new Locale($F{party-lang}) : ( $F{party-lang} != null && $F{party-lang}.length() == 2 ? new Locale($F{party-lang}) : 'en_US')]]></variableExpression>
 		<initialValueExpression><![CDATA[$F{party-lang} != null && $F{party-lang}.length() == 5 ? new Locale($F{party-lang}) : ( $F{party-lang} != null && $F{party-lang}.length() == 2 ? new Locale($F{party-lang}) : 'en_US' )]]></initialValueExpression>
@@ -622,7 +625,7 @@
 				<textElement textAlignment="Center">
 					<font size="9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{line-quantity} ? (int)Double.valueOf($F{line-quantity}.trim()).doubleValue() : '']]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{line-quantity} ? $F{invoice_qty-invoice_qty} ? (int)Double.valueOf($F{line-quantity}.trim()).doubleValue() : $F{line-quantity} : '']]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="422" y="2" width="41" height="12" uuid="2c99d035-234a-4f0c-b5db-99607b8b6ea7"/>
