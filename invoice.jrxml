@@ -152,11 +152,14 @@
 	<field name="comment-comment" class="java.lang.String">
 		<fieldDescription><![CDATA[/data/record/comment-comment]]></fieldDescription>
 	</field>
-	<field name="payment_term-name" class="java.lang.String">
+	<field name="payment_term-name" class="java.lang.Object">
 		<fieldDescription><![CDATA[/data/record/payment_term-payment_term/name-name]]></fieldDescription>
 	</field>
-	<field name="payment_type-name" class="java.lang.String">
+	<field name="payment_type-name" class="java.lang.Object">
 		<fieldDescription><![CDATA[/data/record/payment_type-payment_type/name-name]]></fieldDescription>
+	</field>
+	<field name="payment_type-note" class="java.lang.Object">
+		<fieldDescription><![CDATA[/data/record/payment_type-payment_type/note-note]]></fieldDescription>
 	</field>
 	<field name="user-name" class="java.lang.String">
 		<fieldDescription><![CDATA[/data/record/create_uid-create_uid/name-name]]></fieldDescription>
@@ -196,9 +199,6 @@
 	</field>
 	<field name="untaxed_amount-untaxed_amount" class="java.lang.Number">
 		<fieldDescription><![CDATA[/data/record/untaxed_amount-untaxed_amount]]></fieldDescription>
-	</field>
-	<field name="note-note" class="java.lang.String">
-		<fieldDescription><![CDATA[/data/record/payment_type-payment_type/note-note]]></fieldDescription>
 	</field>
 	<field name="gross_unit_price-gross_unit_price" class="java.lang.Number">
 		<fieldDescription><![CDATA[/data/record/lines-lines/gross_unit_price-gross_unit_price]]></fieldDescription>
@@ -374,7 +374,7 @@
 					<textElement>
 						<font size="9" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[tr($V{L},"Payment Term")+": "+$F{payment_term-name}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[tr($V{L},"Payment Term")+": "+$F{payment_term-name}.get($F{party-lang})]]></textFieldExpression>
 				</textField>
 				<line>
 					<reportElement x="10" y="44" width="530" height="1" uuid="02b33d2b-0ffe-421e-8cc8-51001eb87daa"/>
@@ -398,12 +398,12 @@
 				</line>
 				<textField>
 					<reportElement x="341" y="74" width="199" height="30" uuid="cf0d63cf-238d-4158-9a90-d9f3202fa7a3">
-						<printWhenExpression><![CDATA[$F{payment_type-name} != '']]></printWhenExpression>
+						<printWhenExpression><![CDATA[$F{payment_type-name}.get($F{party-lang}) != null]]></printWhenExpression>
 					</reportElement>
 					<textElement>
 						<font size="9" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[tr($V{L},"Payment Type")+": "+$F{payment_type-name}+"\n"+$F{note-note}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[tr($V{L},"Payment Type")+": "+$F{payment_type-name}.get($F{party-lang})+"\n"+$F{payment_type-note}.get($F{party-lang})]]></textFieldExpression>
 				</textField>
 				<componentElement>
 					<reportElement key="table 1" x="8" y="71" width="168" height="50" uuid="9bb63471-5005-4919-a92e-5b494fa8fd09">
