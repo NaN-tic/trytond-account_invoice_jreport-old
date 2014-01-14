@@ -625,7 +625,7 @@
 				<textElement textAlignment="Center">
 					<font size="9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{line-quantity} ? $F{company-invoice_qty} ? (int)Double.valueOf($F{line-quantity}.trim()).doubleValue() : $F{line-quantity} : '']]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{line-quantity} ? $F{company-invoice_qty} ? (int)Double.valueOf($F{line-quantity}.trim()).doubleValue() : Double.valueOf($F{line-quantity}.trim()).doubleValue() : '']]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="422" y="2" width="41" height="12" uuid="2c99d035-234a-4f0c-b5db-99607b8b6ea7"/>
