@@ -400,13 +400,13 @@
 					<reportElement x="10" y="25" width="530" height="1" uuid="3b2441e0-d347-40a9-877e-5c359698a821"/>
 				</line>
 				<textField>
-					<reportElement x="341" y="74" width="199" height="30" uuid="cf0d63cf-238d-4158-9a90-d9f3202fa7a3">
+					<reportElement x="341" y="74" width="199" height="12" uuid="cf0d63cf-238d-4158-9a90-d9f3202fa7a3">
 						<printWhenExpression><![CDATA[$F{payment_type-name}.get($F{party-lang}) != null]]></printWhenExpression>
 					</reportElement>
 					<textElement>
 						<font size="9" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[tr($V{L},"Payment Type")+": "+$F{payment_type-name}.get($F{party-lang})+"\n"+$F{payment_type-note}.get($F{party-lang})]]></textFieldExpression>
+					<textFieldExpression><![CDATA[tr($V{L},"Payment Type")+": "+$F{payment_type-name}.get($F{party-lang})]]></textFieldExpression>
 				</textField>
 				<componentElement>
 					<reportElement key="table 1" x="8" y="71" width="168" height="50" uuid="9bb63471-5005-4919-a92e-5b494fa8fd09">
@@ -572,6 +572,15 @@
 						<font size="9" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[tr($V{L},"Taxes")]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement x="342" y="89" width="199" height="30" uuid="9c25389b-7a6f-40a7-885a-9149f1b07294">
+						<printWhenExpression><![CDATA[$F{payment_type-note}.get($F{party-lang}) != null]]></printWhenExpression>
+					</reportElement>
+					<textElement>
+						<font size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{payment_type-note}.get($F{party-lang})]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupFooter>
