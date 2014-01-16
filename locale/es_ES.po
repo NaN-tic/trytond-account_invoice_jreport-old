@@ -44,7 +44,7 @@ msgstr "Pro-forma"
 
 msgctxt "jasper:account.invoice:"
 msgid "Qtat."
-msgstr "Qt."
+msgstr "Cant."
 
 msgctxt "jasper:account.invoice:"
 msgid "Quotation"
