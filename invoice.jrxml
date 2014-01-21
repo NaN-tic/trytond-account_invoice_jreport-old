@@ -604,15 +604,15 @@
 		</groupFooter>
 	</group>
 	<pageHeader>
-		<band height="126">
+		<band height="87">
 			<image>
-				<reportElement x="10" y="8" width="157" height="100" uuid="8c1ee22b-4b4b-442c-bf74-5ee50f661100">
+				<reportElement x="10" y="8" width="280" height="60" uuid="8c1ee22b-4b4b-442c-bf74-5ee50f661100">
 					<printWhenExpression><![CDATA[$F{company-logo}.length()>0]]></printWhenExpression>
 				</reportElement>
 				<imageExpression><![CDATA[$F{company-logo}]]></imageExpression>
 			</image>
 			<textField>
-				<reportElement x="10" y="110" width="535" height="12" forecolor="#808080" uuid="4b921473-3454-4b7f-bbc4-7880d2924e66"/>
+				<reportElement x="10" y="71" width="535" height="12" forecolor="#808080" uuid="4b921473-3454-4b7f-bbc4-7880d2924e66"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
