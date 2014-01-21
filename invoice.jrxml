@@ -27,6 +27,15 @@
 		<field name="taxes-description" class="java.lang.String">
 			<fieldDescription><![CDATA[/data/record/taxes-taxes/description-description]]></fieldDescription>
 		</field>
+		<field name="taxes-tax-rate" class="java.lang.Number">
+			<fieldDescription><![CDATA[/data/record/taxes-taxes/tax-tax/rate-rate]]></fieldDescription>
+		</field>
+		<field name="taxes-tax-type" class="java.lang.String">
+			<fieldDescription><![CDATA[/data/record/taxes-taxes/tax-tax/type-type]]></fieldDescription>
+		</field>
+		<field name="taxes-tax-amount" class="java.lang.String">
+			<fieldDescription><![CDATA[/data/record/taxes-taxes/tax-tax/amount-amount]]></fieldDescription>
+		</field>
 		<variable name="L" class="java.util.Locale">
 			<variableExpression><![CDATA[$F{party-lang} != null && $F{party-lang}.length() == 5 ? new Locale($F{party-lang}) : ( $F{party-lang} != null && $F{party-lang}.length() == 2 ? new Locale($F{party-lang}) : new Locale('en_US'))]]></variableExpression>
 			<initialValueExpression><![CDATA[$F{party-lang} != null && $F{party-lang}.length() == 5 ? new Locale($F{party-lang}) : ( $F{party-lang} != null && $F{party-lang}.length() == 2 ? new Locale($F{party-lang}) : new Locale('en_US'))]]></initialValueExpression>
@@ -191,6 +200,15 @@
 	<field name="line-tax-name" class="java.lang.String">
 		<fieldDescription><![CDATA[/data/record/lines-lines/invoice_taxes-invoice_taxes/tax-tax/name-name]]></fieldDescription>
 	</field>
+	<field name="line-tax-rate" class="java.lang.Number">
+		<fieldDescription><![CDATA[/data/record/lines-lines/invoice_taxes-invoice_taxes/tax-tax/rate-rate]]></fieldDescription>
+	</field>
+	<field name="line-tax-type" class="java.lang.String">
+		<fieldDescription><![CDATA[/data/record/lines-lines/invoice_taxes-invoice_taxes/tax-tax/type-type]]></fieldDescription>
+	</field>
+	<field name="line-tax-amount" class="java.lang.String">
+		<fieldDescription><![CDATA[/data/record/lines-lines/invoice_taxes-invoice_taxes/tax-tax/amount-amount]]></fieldDescription>
+	</field>
 	<field name="symbol-symbol" class="java.lang.String">
 		<fieldDescription><![CDATA[/data/record/currency-currency/symbol-symbol]]></fieldDescription>
 	</field>
@@ -279,8 +297,8 @@
 					<textFieldExpression><![CDATA[$F{reference-reference}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="422" y="119" width="41" height="10" uuid="f56afdfc-d236-4b76-bb62-e5f8415257dd"/>
-					<textElement textAlignment="Right">
+					<reportElement x="424" y="119" width="41" height="10" uuid="f56afdfc-d236-4b76-bb62-e5f8415257dd"/>
+					<textElement textAlignment="Left">
 						<font size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[tr($V{L},"Tax Vat")]]></textFieldExpression>
@@ -438,7 +456,7 @@
 									<textElement>
 										<font size="9"/>
 									</textElement>
-									<textFieldExpression><![CDATA[$F{taxes-description}]]></textFieldExpression>
+									<textFieldExpression><![CDATA[$F{taxes-tax-type} == 'percentage' ? $F{taxes-tax-rate}*100+"%" : $F{taxes-tax-amount} ? $F{taxes-tax-amount} : '']]></textFieldExpression>
 								</textField>
 							</jr:detailCell>
 						</jr:column>
@@ -640,11 +658,11 @@
 				<textFieldExpression><![CDATA[$F{line-quantity} ? $F{company-invoice_qty} ? (int)Double.valueOf($F{line-quantity}.trim()).doubleValue() : Double.valueOf($F{line-quantity}.trim()).doubleValue() : '0']]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="422" y="2" width="41" height="12" uuid="2c99d035-234a-4f0c-b5db-99607b8b6ea7"/>
-				<textElement textAlignment="Right">
+				<reportElement x="424" y="2" width="41" height="12" uuid="2c99d035-234a-4f0c-b5db-99607b8b6ea7"/>
+				<textElement textAlignment="Left">
 					<font size="9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{line-tax-name}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{line-tax-type} == 'percentage' ? $F{line-tax-rate}*100+"%" : $F{line-tax-amount} ? $F{line-tax-amount} : '']]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
