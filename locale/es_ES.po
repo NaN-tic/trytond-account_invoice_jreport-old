@@ -94,3 +94,6 @@ msgctxt "jasper:account.invoice:"
 msgid "Debit"
 msgstr "Debe"
 
+msgctxt "jasper:account.invoice:"
+msgid "Origins"
+msgstr "Origen"
