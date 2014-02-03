@@ -4,9 +4,20 @@
 from trytond.pool import PoolMeta
 from trytond.modules.jasper_reports.jasper import JasperReport
 
-__all__ = ['InvoiceReport']
+__all__ = ['Invoice', 'InvoiceReport']
 __metaclass__ = PoolMeta
 
 
 class InvoiceReport(JasperReport):
     __name__ = 'account.invoice'
+
+
+class Invoice:
+    __name__ = 'account.invoice'
+
+    def print_invoice(self):
+        '''
+        When post invoice call print report and cache
+        More fast post invoice without generate PDF report
+        '''
+        return
