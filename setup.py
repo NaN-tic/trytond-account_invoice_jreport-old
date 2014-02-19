@@ -28,7 +28,7 @@ requires.append('trytond >= %s.%s, < %s.%s' %
 
 setup(name='trytonzz_account_invoice_jreport',
     version=info.get('version', '0.0.1'),
-    description='Account Invoice Jasper Report for Account Invoice',
+    description='Tryton module to Jasper Report for Account Invoice',
     author='Zikzakmedia SL',
     author_email='zikzak@zikzakmedia.com',
     url='http://www.zikzakmedia.com',
@@ -40,7 +40,7 @@ setup(name='trytonzz_account_invoice_jreport',
         ],
     package_data={
         'trytond.modules.account_invoice_jreport': info.get('xml', []) \
-            + ['tryton.cfg'],
+            + ['tryton.cfg', 'locale/*.po'],
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
