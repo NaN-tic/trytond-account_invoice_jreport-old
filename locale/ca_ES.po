@@ -75,10 +75,6 @@ msgid "Vat"
 msgstr "CIF/NIF"
 
 msgctxt "jasper:account.invoice:"
-msgid "VAT"
-msgstr "CIF/NIF"
-
-msgctxt "jasper:account.invoice:"
 msgid "Taxes"
 msgstr "Impostos"
 

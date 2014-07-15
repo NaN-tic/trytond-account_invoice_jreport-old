@@ -8,59 +8,59 @@ msgstr "Base"
 
 msgctxt "jasper:account.invoice:"
 msgid "Credit Note"
-msgstr "Abono"
+msgstr "Note de crédit"
 
 msgctxt "jasper:account.invoice:"
 msgid "Date"
-msgstr "Fecha"
+msgstr "Date"
 
 msgctxt "jasper:account.invoice:"
 msgid "Description"
-msgstr "Descripción"
+msgstr "Description"
 
 msgctxt "jasper:account.invoice:"
 msgid "DTE."
-msgstr "DTE."
+msgstr "Remise"
 
 msgctxt "jasper:account.invoice:"
 msgid "Invoice"
-msgstr "Factura"
+msgstr "Facture"
 
 msgctxt "jasper:account.invoice:"
 msgid "Payment Term"
-msgstr "Plazo de pago"
+msgstr "Conditions de paiement"
 
 msgctxt "jasper:account.invoice:"
 msgid "Payment Type"
-msgstr "Tipo de pago"
+msgstr "Mode de paiement"
 
 msgctxt "jasper:account.invoice:"
 msgid "Price"
-msgstr "Precio"
+msgstr "Prix"
 
 msgctxt "jasper:account.invoice:"
 msgid "Pro-forma"
-msgstr "Pro-forma"
+msgstr "Proforma"
 
 msgctxt "jasper:account.invoice:"
 msgid "Qtat."
-msgstr "Cant."
+msgstr "Qté."
 
 msgctxt "jasper:account.invoice:"
 msgid "Quotation"
-msgstr "Presupuesto"
+msgstr "Devis"
 
 msgctxt "jasper:account.invoice:"
 msgid "Reference"
-msgstr "Referencia"
+msgstr "Référence"
 
 msgctxt "jasper:account.invoice:"
 msgid "Tax"
-msgstr "Impuesto"
+msgstr "Taxe"
 
 msgctxt "jasper:account.invoice:"
 msgid "Tax Vat"
-msgstr "Impuesto"
+msgstr "TVA Taxe"
 
 msgctxt "jasper:account.invoice:"
 msgid "Total"
@@ -68,28 +68,28 @@ msgstr "Total"
 
 msgctxt "jasper:account.invoice:"
 msgid "Untaxed"
-msgstr "Base imponible"
+msgstr "Hors taxe"
 
 msgctxt "jasper:account.invoice:"
 msgid "Vat"
-msgstr "CIF/NIF"
+msgstr "VAT"
 
 msgctxt "jasper:account.invoice:"
 msgid "Taxes"
-msgstr "Impuestos"
+msgstr "Taxes"
 
 msgctxt "jasper:account.invoice:"
 msgid "Due dates"
-msgstr "Vencimientos"
+msgstr "Echéances"
 
 msgctxt "jasper:account.invoice:"
 msgid "Maturity date"
-msgstr "Vencimiento"
+msgstr "Echéance"
 
 msgctxt "jasper:account.invoice:"
 msgid "Debit"
-msgstr "Debe"
+msgstr "Débit"
 
 msgctxt "jasper:account.invoice:"
 msgid "Origins"
-msgstr "Origen"
+msgstr "Origines"
