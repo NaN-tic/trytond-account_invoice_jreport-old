@@ -30,7 +30,7 @@
 		<field name="taxes-description" class="java.lang.String">
 			<fieldDescription><![CDATA[/data/record/taxes-taxes/description-description]]></fieldDescription>
 		</field>
-		<field name="taxes-tax-rate" class="java.lang.Number">
+		<field name="taxes-tax-rate" class="java.math.BigDecimal">
 			<fieldDescription><![CDATA[/data/record/taxes-taxes/tax-tax/rate-rate]]></fieldDescription>
 		</field>
 		<field name="taxes-tax-type" class="java.lang.String">
