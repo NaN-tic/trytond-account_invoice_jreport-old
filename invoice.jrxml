@@ -242,7 +242,7 @@
 	<field name="maturity_date-maturity_date" class="java.lang.String">
 		<fieldDescription><![CDATA[/data/record/lines_to_pay-lines_to_pay/maturity_date-maturity_date]]></fieldDescription>
 	</field>
-	<variable name="L" class="java.util.Locale">
+	<variable name="L" class="java.util.Locale" resetType="Page">
 		<variableExpression><![CDATA[$F{party-lang} != null && $F{party-lang}.length() == 5 ? new Locale($F{party-lang}) : ( $F{party-lang} != null && $F{party-lang}.length() == 2 ? new Locale($F{party-lang}) : 'en_US')]]></variableExpression>
 		<initialValueExpression><![CDATA[$F{party-lang} != null && $F{party-lang}.length() == 5 ? new Locale($F{party-lang}) : ( $F{party-lang} != null && $F{party-lang}.length() == 2 ? new Locale($F{party-lang}) : 'en_US' )]]></initialValueExpression>
 	</variable>
