@@ -9,10 +9,13 @@
 			<parameterDescription><![CDATA[]]></parameterDescription>
 			<defaultValueExpression><![CDATA[$P{REPORT_DATA_SOURCE}.moveFirst()]]></defaultValueExpression>
 		</parameter>
+		<parameter name="INVOICE_ID" class="java.lang.String">
+			<defaultValueExpression><![CDATA[$F{invoice_id}]]></defaultValueExpression>
+		</parameter>
 		<queryString language="xPath">
 			<![CDATA[]]>
 		</queryString>
-		<field name="invoice_id" class="java.lang.Long">
+		<field name="invoice_id" class="java.lang.String">
 			<fieldDescription><![CDATA[/data/record/id]]></fieldDescription>
 		</field>
 		<field name="party-lang" class="java.lang.String">
@@ -40,15 +43,22 @@
 			<variableExpression><![CDATA[$F{party-lang} != null && $F{party-lang}.length() == 5 ? new Locale($F{party-lang}) : ( $F{party-lang} != null && $F{party-lang}.length() == 2 ? new Locale($F{party-lang}) : new Locale('en_US'))]]></variableExpression>
 			<initialValueExpression><![CDATA[$F{party-lang} != null && $F{party-lang}.length() == 5 ? new Locale($F{party-lang}) : ( $F{party-lang} != null && $F{party-lang}.length() == 2 ? new Locale($F{party-lang}) : new Locale('en_US'))]]></initialValueExpression>
 		</variable>
+		<filterExpression><![CDATA[($P{INVOICE_ID} == $F{invoice_id})]]></filterExpression>
 	</subDataset>
 	<subDataset name="lines_to_pay" uuid="2574814a-7d85-4740-b981-ff0baa86c908">
 		<parameter name="REWIND" class="java.lang.Object">
 			<parameterDescription><![CDATA[]]></parameterDescription>
 			<defaultValueExpression><![CDATA[$P{REPORT_DATA_SOURCE}.moveFirst()]]></defaultValueExpression>
 		</parameter>
+		<parameter name="INVOICE_ID" class="java.lang.String">
+			<defaultValueExpression><![CDATA[$F{invoice_id}]]></defaultValueExpression>
+		</parameter>
 		<queryString language="xPath">
 			<![CDATA[]]>
 		</queryString>
+		<field name="invoice_id" class="java.lang.String">
+			<fieldDescription><![CDATA[/data/record/id]]></fieldDescription>
+		</field>
 		<field name="party-lang" class="java.lang.String">
 			<fieldDescription><![CDATA[/data/record/party_lang-party_lang]]></fieldDescription>
 		</field>
@@ -65,10 +75,12 @@
 			<variableExpression><![CDATA[$F{party-lang} != null && $F{party-lang}.length() == 5 ? new Locale($F{party-lang}) : ( $F{party-lang} != null && $F{party-lang}.length() == 2 ? new Locale($F{party-lang}) : new Locale('en_US'))]]></variableExpression>
 			<initialValueExpression><![CDATA[$F{party-lang} != null && $F{party-lang}.length() == 5 ? new Locale($F{party-lang}) : ( $F{party-lang} != null && $F{party-lang}.length() == 2 ? new Locale($F{party-lang}) : new Locale('en_US'))]]></initialValueExpression>
 		</variable>
+		<filterExpression><![CDATA[($P{INVOICE_ID} == $F{invoice_id})]]></filterExpression>
 	</subDataset>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["/"]]></defaultValueExpression>
 	</parameter>
+	<parameter name="INVOICE_ID" class="java.lang.String"/>
 	<parameter name="DUE_DS" class="java.lang.Object"/>
 	<parameter name="TAXES_DS" class="java.lang.Object"/>
 	<queryString language="xPath">
@@ -453,6 +465,9 @@
 					</reportElement>
 					<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 						<datasetRun subDataset="taxes" uuid="d8ab3f36-e783-4348-b91d-994987cbb219">
+							<datasetParameter name="INVOICE_ID">
+								<datasetParameterExpression><![CDATA[$F{id}]]></datasetParameterExpression>
+							</datasetParameter>
 							<dataSourceExpression><![CDATA[$P{TAXES_DS}]]></dataSourceExpression>
 						</datasetRun>
 						<jr:column width="52" uuid="a5f33de6-26e1-4ed9-a249-228c92c3097c">
@@ -542,6 +557,9 @@
 					</reportElement>
 					<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 						<datasetRun subDataset="lines_to_pay" uuid="8293224d-610b-47c7-ac51-b8b8b3ac7ba7">
+							<datasetParameter name="INVOICE_ID">
+								<datasetParameterExpression><![CDATA[$F{id}]]></datasetParameterExpression>
+							</datasetParameter>
 							<dataSourceExpression><![CDATA[$P{DUE_DS}]]></dataSourceExpression>
 						</datasetRun>
 						<jr:column width="70" uuid="c193e098-f837-4ffa-b449-cd871e55276f">
