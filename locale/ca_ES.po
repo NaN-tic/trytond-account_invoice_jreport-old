@@ -71,7 +71,7 @@ msgid "Untaxed"
 msgstr "Base imposable"
 
 msgctxt "jasper:account.invoice:"
-msgid "Vat"
+msgid "VAT"
 msgstr "CIF/NIF"
 
 msgctxt "jasper:account.invoice:"

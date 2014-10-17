@@ -71,7 +71,7 @@ msgid "Untaxed"
 msgstr "Hors taxe"
 
 msgctxt "jasper:account.invoice:"
-msgid "Vat"
+msgid "VAT"
 msgstr "VAT"
 
 msgctxt "jasper:account.invoice:"
