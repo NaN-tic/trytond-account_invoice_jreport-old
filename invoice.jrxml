@@ -152,8 +152,8 @@
 	<field name="party-vat_number" class="java.lang.String">
 		<fieldDescription><![CDATA[/data/record/party-party/vat_number-vat_number]]></fieldDescription>
 	</field>
-	<field name="invoice-full_address" class="java.lang.String">
-		<fieldDescription><![CDATA[/data/record/invoice_address-invoice_address/full_address-full_address]]></fieldDescription>
+	<field name="invoice-full_address_lang" class="java.lang.String">
+		<fieldDescription><![CDATA[/data/record/invoice_address-invoice_address/full_address_lang-full_address_lang]]></fieldDescription>
 	</field>
 	<field name="invoice_date-invoice_date" class="java.util.Date">
 		<fieldDescription><![CDATA[/data/record/invoice_date-invoice_date]]></fieldDescription>
@@ -283,7 +283,7 @@
 					<textElement markup="styled">
 						<font size="9"/>
 					</textElement>
-					<textFieldExpression><![CDATA["<style isBold='true' pdfFontName='Helvetica'>"+$F{party-full_name}+"</style>\n"+$F{invoice-full_address}]]></textFieldExpression>
+					<textFieldExpression><![CDATA["<style isBold='true' pdfFontName='Helvetica'>"+$F{party-full_name}.replaceAll("&","&amp;")+"</style>\n"+$F{invoice-full_address_lang}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="10" y="6" width="290" height="21" forecolor="#010101" uuid="00682863-426c-400b-a17a-62686a001bd4"/>
