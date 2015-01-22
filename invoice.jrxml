@@ -242,6 +242,9 @@
 	<field name="maturity_date-maturity_date" class="java.lang.String">
 		<fieldDescription><![CDATA[/data/record/lines_to_pay-lines_to_pay/maturity_date-maturity_date]]></fieldDescription>
 	</field>
+	<field name="taxes-id" class="java.lang.String">
+		<fieldDescription><![CDATA[/data/record/taxes-taxes/id]]></fieldDescription>
+	</field>
 	<variable name="L" class="java.util.Locale" resetType="Page">
 		<variableExpression><![CDATA[$F{party-lang} != null && $F{party-lang}.length() == 5 ? new Locale($F{party-lang}) : ( $F{party-lang} != null && $F{party-lang}.length() == 2 ? new Locale($F{party-lang}) : 'en_US')]]></variableExpression>
 		<initialValueExpression><![CDATA[$F{party-lang} != null && $F{party-lang}.length() == 5 ? new Locale($F{party-lang}) : ( $F{party-lang} != null && $F{party-lang}.length() == 2 ? new Locale($F{party-lang}) : 'en_US' )]]></initialValueExpression>
@@ -462,6 +465,7 @@
 				<componentElement>
 					<reportElement key="table 1" x="8" y="71" width="168" height="50" uuid="9bb63471-5005-4919-a92e-5b494fa8fd09">
 						<property name="TRYTON_RELATIONS" value="taxes"/>
+						<printWhenExpression><![CDATA[$F{taxes-id}.length() > 0]]></printWhenExpression>
 					</reportElement>
 					<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 						<datasetRun subDataset="taxes" uuid="d8ab3f36-e783-4348-b91d-994987cbb219">
@@ -623,7 +627,7 @@
 				</textField>
 				<textField>
 					<reportElement x="10" y="59" width="166" height="12" uuid="8d47cb48-94f8-4578-9e20-bc4568942364">
-						<printWhenExpression><![CDATA[$F{maturity_date-maturity_date}.length() > 0]]></printWhenExpression>
+						<printWhenExpression><![CDATA[$F{taxes-id}.length() > 0]]></printWhenExpression>
 					</reportElement>
 					<textElement>
 						<font size="9" isBold="true"/>
