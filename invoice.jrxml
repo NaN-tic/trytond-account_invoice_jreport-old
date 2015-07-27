@@ -3,7 +3,7 @@
 	<property name="TRYTON_RELATIONS" value="[&apos;lines&apos;]"/>
 	<property name="ireport.zoom" value="1.464100000000004"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="68"/>
+	<property name="ireport.y" value="352"/>
 	<subDataset name="taxes" uuid="5221ae81-f459-44b2-ac92-4babe070fc67">
 		<parameter name="REWIND" class="java.lang.Object">
 			<parameterDescription><![CDATA[]]></parameterDescription>
@@ -780,7 +780,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{company-vat_number}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isStretchWithOverflow="true">
 				<reportElement x="12" y="77" width="529" height="10" forecolor="#808080" uuid="c69d2c5d-8ae4-439d-92aa-47bc1c78c257"/>
 				<textElement textAlignment="Center">
 					<font size="7"/>
