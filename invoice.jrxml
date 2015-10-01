@@ -152,6 +152,9 @@
 	<field name="party-vat_code" class="java.lang.String">
 		<fieldDescription><![CDATA[/data/record/party-party/vat_code-vat_code]]></fieldDescription>
 	</field>
+	<field name="party-identifier" class="java.lang.String">
+		<fieldDescription><![CDATA[/data/record/party-party/identifier_code-identifier_code]]></fieldDescription>
+	</field>
 	<field name="invoice-full_address_lang" class="java.lang.String">
 		<fieldDescription><![CDATA[/data/record/invoice_address-invoice_address/full_address_lang-full_address_lang]]></fieldDescription>
 	</field>
@@ -334,13 +337,11 @@
 					<textFieldExpression><![CDATA[tr($V{L},"Reference")+":"]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="65" y="62" width="235" height="12" uuid="e13c33aa-af2c-487d-8071-8f0889709f04">
-						<printWhenExpression><![CDATA[$F{party-vat_code} != '']]></printWhenExpression>
-					</reportElement>
+					<reportElement x="65" y="62" width="235" height="12" uuid="e13c33aa-af2c-487d-8071-8f0889709f04"/>
 					<textElement textAlignment="Left">
 						<font size="9"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{party-vat_code}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{party-vat_code} ? $F{party-vat_code}  : $F{party-identifier}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="10" y="49" width="60" height="12" uuid="dd409cc4-d552-476f-9753-3ea295c5686f">
@@ -352,9 +353,7 @@
 					<textFieldExpression><![CDATA[tr($V{L},"Date")+":"]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="10" y="62" width="60" height="12" uuid="8bc1a99d-8748-4ba7-983a-b6c33e6e96ae">
-						<printWhenExpression><![CDATA[$F{party-vat_code} != '']]></printWhenExpression>
-					</reportElement>
+					<reportElement x="10" y="62" width="60" height="12" uuid="8bc1a99d-8748-4ba7-983a-b6c33e6e96ae"/>
 					<textElement>
 						<font size="9" isBold="true"/>
 					</textElement>
