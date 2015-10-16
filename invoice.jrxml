@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="invoice" language="i18ngroovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ef58b8f6-a59b-4d9c-94cb-c2089034d430">
 	<property name="TRYTON_RELATIONS" value="[&apos;lines&apos;]"/>
-	<property name="ireport.zoom" value="1.464100000000004"/>
+	<property name="ireport.zoom" value="1.2100000000000035"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="63"/>
+	<property name="ireport.y" value="0"/>
 	<subDataset name="taxes" uuid="5221ae81-f459-44b2-ac92-4babe070fc67">
 		<parameter name="REWIND" class="java.lang.Object">
 			<parameterDescription><![CDATA[]]></parameterDescription>
@@ -98,6 +98,9 @@
 	<field name="company-vat_code" class="java.lang.String">
 		<fieldDescription><![CDATA[/data/record/company-company/party-party/vat_code-vat_code]]></fieldDescription>
 	</field>
+	<field name="company-identifier" class="java.lang.String">
+		<fieldDescription><![CDATA[/data/record/company-company/party-party/identifier_code-identifier_code]]></fieldDescription>
+	</field>
 	<field name="company-phone" class="java.lang.String">
 		<fieldDescription><![CDATA[/data/record/company-company/party-party/phone-phone]]></fieldDescription>
 	</field>
@@ -117,10 +120,13 @@
 		<fieldDescription><![CDATA[/data/record/company-company/party-party/addresses-addresses/country-country/name-name]]></fieldDescription>
 	</field>
 	<field name="company-header" class="java.lang.String">
-		<fieldDescription><![CDATA[/data/record/company-company/header-header]]></fieldDescription>
+		<fieldDescription><![CDATA[/data/record/company-company/invoice_header-invoice_header]]></fieldDescription>
 	</field>
 	<field name="company-footer" class="java.lang.String">
-		<fieldDescription><![CDATA[/data/record/company-company/footer-footer]]></fieldDescription>
+		<fieldDescription><![CDATA[/data/record/company-company/invoice_footer-invoice_footer]]></fieldDescription>
+	</field>
+	<field name="company_background" class="java.lang.String">
+		<fieldDescription><![CDATA[/data/record/company-company/invoice_background-invoice_background]]></fieldDescription>
 	</field>
 	<field name="company-invoice_qty" class="java.lang.Boolean">
 		<fieldDescription><![CDATA[/data/record/company-company/invoice_qty-invoice_qty]]></fieldDescription>
@@ -258,37 +264,37 @@
 	<group name="Invoice" isStartNewPage="true" isResetPageNumber="true">
 		<groupExpression><![CDATA[$F{id}]]></groupExpression>
 		<groupHeader>
-			<band height="133">
+			<band height="116">
 				<textField>
-					<reportElement x="57" y="119" width="234" height="10" uuid="c2c7d40b-b91b-464c-b6b4-f6846d6e2e31"/>
+					<reportElement x="57" y="104" width="234" height="10" uuid="c2c7d40b-b91b-464c-b6b4-f6846d6e2e31"/>
 					<textElement>
 						<font size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[tr($V{L},"Description")]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="16" y="119" width="40" height="10" uuid="e76d2235-66e7-4b2f-bdcd-040d278bdf5d"/>
+					<reportElement x="16" y="104" width="40" height="10" uuid="e76d2235-66e7-4b2f-bdcd-040d278bdf5d"/>
 					<textElement textAlignment="Center">
 						<font size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[tr($V{L},"Qtat.")]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="369" y="119" width="50" height="10" uuid="3f773460-0745-4ba0-96ab-e1dfa90dc280"/>
+					<reportElement x="369" y="104" width="50" height="10" uuid="3f773460-0745-4ba0-96ab-e1dfa90dc280"/>
 					<textElement textAlignment="Right">
 						<font size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[tr($V{L},"Price")]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="490" y="119" width="48" height="10" uuid="a4d78f17-ce8b-4ee7-8477-6c03dc9fd71b"/>
+					<reportElement x="490" y="104" width="48" height="10" uuid="a4d78f17-ce8b-4ee7-8477-6c03dc9fd71b"/>
 					<textElement textAlignment="Right">
 						<font size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[tr($V{L},"Total")]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="305" y="6" width="240" height="102" uuid="5441748d-852a-4291-8837-2528fe11a658"/>
+					<reportElement x="305" y="6" width="240" height="93" uuid="5441748d-852a-4291-8837-2528fe11a658"/>
 					<textElement markup="styled">
 						<font size="9"/>
 					</textElement>
@@ -299,10 +305,10 @@
 					<textElement textAlignment="Left">
 						<font size="12" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{type-type} .equals("out_credit_note") ? tr($V{L},"Credit Note")+" "+$F{number-number} : $F{state-state}.equals("validated") ? tr($V{L},"Pro-forma") : $F{state-state}.equals("draft") ? tr($V{L},"Quotation") : $F{party-vat_code} ? tr($V{L},"Invoice")+" "+$F{number-number} : tr($V{L},"Simplified Invoice")+" "+$F{number-number}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{type-type} .equals("out_credit_note") ? tr($V{L},"Credit Note")+" "+$F{number-number} : $F{state-state}.equals("validated") ? tr($V{L},"Pro-forma") : $F{state-state}.equals("draft") ? tr($V{L},"Quotation") : ($F{party-vat_code} || $F{party-identifier})? tr($V{L},"Invoice")+" "+$F{number-number} : tr($V{L},"Simplified Invoice")+" "+$F{number-number}]]></textFieldExpression>
 				</textField>
 				<textField isBlankWhenNull="true">
-					<reportElement x="65" y="49" width="235" height="12" uuid="bcb43a8d-520e-44e8-8cb8-92664ef9dd0d">
+					<reportElement x="65" y="35" width="235" height="12" uuid="bcb43a8d-520e-44e8-8cb8-92664ef9dd0d">
 						<printWhenExpression><![CDATA[$F{invoice_date-invoice_date} != '']]></printWhenExpression>
 					</reportElement>
 					<textElement>
@@ -311,24 +317,24 @@
 					<textFieldExpression><![CDATA[new SimpleDateFormat("dd'-'MM'-'yyyy").format($F{invoice_date-invoice_date})]]></textFieldExpression>
 				</textField>
 				<line>
-					<reportElement x="10" y="130" width="530" height="1" uuid="28e865b0-5cd4-498b-bb03-0d8fcb786a54"/>
+					<reportElement x="10" y="115" width="530" height="1" uuid="28e865b0-5cd4-498b-bb03-0d8fcb786a54"/>
 				</line>
 				<textField>
-					<reportElement x="65" y="74" width="235" height="12" uuid="cb1d5d38-ba52-42f3-9314-1e44e614a39e"/>
+					<reportElement x="65" y="60" width="235" height="12" uuid="cb1d5d38-ba52-42f3-9314-1e44e614a39e"/>
 					<textElement>
 						<font fontName="SansSerif" size="9" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{reference-reference}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="424" y="119" width="41" height="10" uuid="f56afdfc-d236-4b76-bb62-e5f8415257dd"/>
+					<reportElement x="424" y="104" width="41" height="10" uuid="f56afdfc-d236-4b76-bb62-e5f8415257dd"/>
 					<textElement textAlignment="Left">
 						<font size="8"/>
 					</textElement>
 					<textFieldExpression><![CDATA[tr($V{L},"Tax Vat")]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="10" y="74" width="60" height="12" uuid="25c04a14-94c8-4cba-9c3d-3c9d90941873">
+					<reportElement x="10" y="60" width="60" height="12" uuid="25c04a14-94c8-4cba-9c3d-3c9d90941873">
 						<printWhenExpression><![CDATA[$F{reference-reference} != '']]></printWhenExpression>
 					</reportElement>
 					<textElement>
@@ -337,14 +343,14 @@
 					<textFieldExpression><![CDATA[tr($V{L},"Reference")+":"]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="65" y="62" width="235" height="12" uuid="e13c33aa-af2c-487d-8071-8f0889709f04"/>
+					<reportElement x="65" y="48" width="235" height="12" uuid="e13c33aa-af2c-487d-8071-8f0889709f04"/>
 					<textElement textAlignment="Left">
 						<font size="9"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{party-vat_code} ? $F{party-vat_code}  : $F{party-identifier}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{party-vat_code} ? $F{party-vat_code} : $F{party-identifier}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="10" y="49" width="60" height="12" uuid="dd409cc4-d552-476f-9753-3ea295c5686f">
+					<reportElement x="10" y="35" width="60" height="12" uuid="dd409cc4-d552-476f-9753-3ea295c5686f">
 						<printWhenExpression><![CDATA[$F{invoice_date-invoice_date} != '']]></printWhenExpression>
 					</reportElement>
 					<textElement>
@@ -353,21 +359,23 @@
 					<textFieldExpression><![CDATA[tr($V{L},"Date")+":"]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="10" y="62" width="60" height="12" uuid="8bc1a99d-8748-4ba7-983a-b6c33e6e96ae"/>
+					<reportElement x="10" y="48" width="60" height="12" uuid="8bc1a99d-8748-4ba7-983a-b6c33e6e96ae">
+						<printWhenExpression><![CDATA[$F{party-vat_code} || $F{party-identifier}]]></printWhenExpression>
+					</reportElement>
 					<textElement>
 						<font size="9" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[tr($V{L},"VAT")+":"]]></textFieldExpression>
 				</textField>
 				<textField isBlankWhenNull="true">
-					<reportElement x="10" y="101" width="290" height="12" uuid="c8d8ce50-79c0-48ff-93e0-d5aa78c2bcd5"/>
+					<reportElement x="10" y="87" width="290" height="12" uuid="c8d8ce50-79c0-48ff-93e0-d5aa78c2bcd5"/>
 					<textElement>
 						<font size="9"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{description-description}]]></textFieldExpression>
 				</textField>
 				<textField isBlankWhenNull="true">
-					<reportElement x="64" y="88" width="236" height="12" uuid="03fa7508-be6d-40c7-a654-0f53d377cd6e">
+					<reportElement x="64" y="74" width="236" height="12" uuid="03fa7508-be6d-40c7-a654-0f53d377cd6e">
 						<printWhenExpression><![CDATA[$F{origins-origins} != '']]></printWhenExpression>
 					</reportElement>
 					<textElement>
@@ -376,7 +384,7 @@
 					<textFieldExpression><![CDATA[$F{origins-origins}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="9" y="88" width="60" height="12" uuid="600cbb38-dade-48d4-98b4-fa0e3a578aae">
+					<reportElement x="9" y="74" width="60" height="12" uuid="600cbb38-dade-48d4-98b4-fa0e3a578aae">
 						<printWhenExpression><![CDATA[$F{origins-origins} != '']]></printWhenExpression>
 					</reportElement>
 					<textElement>
@@ -431,7 +439,7 @@
 					<textFieldExpression><![CDATA[tr($V{L},"Untaxed")]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement x="341" y="59" width="199" height="12" uuid="f98b73c2-40f5-4951-a74c-3c41ad8c3e4d">
+					<reportElement x="340" y="59" width="199" height="12" uuid="f98b73c2-40f5-4951-a74c-3c41ad8c3e4d">
 						<printWhenExpression><![CDATA[$F{payment_term-name} != '']]></printWhenExpression>
 					</reportElement>
 					<textElement>
@@ -450,7 +458,7 @@
 					<textFieldExpression><![CDATA[$F{symbol-symbol}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-					<reportElement x="12" y="121" width="528" height="36" isRemoveLineWhenBlank="true" uuid="953a6eb6-324b-4a19-b827-381bb75e1637"/>
+					<reportElement x="10" y="121" width="531" height="36" isRemoveLineWhenBlank="true" uuid="953a6eb6-324b-4a19-b827-381bb75e1637"/>
 					<textElement>
 						<font size="9"/>
 					</textElement>
@@ -460,7 +468,7 @@
 					<reportElement x="10" y="25" width="530" height="1" uuid="3b2441e0-d347-40a9-877e-5c359698a821"/>
 				</line>
 				<textField>
-					<reportElement x="341" y="74" width="199" height="12" uuid="cf0d63cf-238d-4158-9a90-d9f3202fa7a3">
+					<reportElement x="340" y="74" width="199" height="12" uuid="cf0d63cf-238d-4158-9a90-d9f3202fa7a3">
 						<printWhenExpression><![CDATA[$F{payment_type-name}.get($F{party-lang}) != null]]></printWhenExpression>
 					</reportElement>
 					<textElement>
@@ -469,7 +477,7 @@
 					<textFieldExpression><![CDATA[tr($V{L},"Payment Type")+": "+$F{payment_type-name}.get($F{party-lang})]]></textFieldExpression>
 				</textField>
 				<componentElement>
-					<reportElement key="table 1" x="8" y="71" width="168" height="50" uuid="9bb63471-5005-4919-a92e-5b494fa8fd09">
+					<reportElement key="table 1" x="10" y="71" width="168" height="50" uuid="9bb63471-5005-4919-a92e-5b494fa8fd09">
 						<property name="TRYTON_RELATIONS" value="taxes"/>
 						<printWhenExpression><![CDATA[$F{taxes-id}.length() > 0]]></printWhenExpression>
 					</reportElement>
@@ -561,7 +569,7 @@
 					</jr:table>
 				</componentElement>
 				<componentElement>
-					<reportElement key="table2" x="187" y="71" width="140" height="50" uuid="2f90e824-d446-42fb-9825-dd28077c2519">
+					<reportElement key="table2" x="189" y="71" width="140" height="50" uuid="2f90e824-d446-42fb-9825-dd28077c2519">
 						<property name="TRYTON_RELATIONS" value="lines_to_pay"/>
 						<printWhenExpression><![CDATA[$F{maturity_date-maturity_date}.length() > 0]]></printWhenExpression>
 					</reportElement>
@@ -641,7 +649,7 @@
 					<textFieldExpression><![CDATA[tr($V{L},"Taxes")]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement x="342" y="89" width="199" height="30" uuid="9c25389b-7a6f-40a7-885a-9149f1b07294">
+					<reportElement x="340" y="89" width="199" height="30" uuid="9c25389b-7a6f-40a7-885a-9149f1b07294">
 						<printWhenExpression><![CDATA[$F{payment_type-note}.get($F{party-lang}) != null]]></printWhenExpression>
 					</reportElement>
 					<textElement>
@@ -652,8 +660,19 @@
 			</band>
 		</groupFooter>
 	</group>
+	<background>
+		<band height="800">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="-13" y="0" width="13" height="800" forecolor="#808080" uuid="c5b12939-0dd3-4ede-a408-5683451a345b"/>
+				<textElement textAlignment="Center" rotation="Left">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{company_background}]]></textFieldExpression>
+			</textField>
+		</band>
+	</background>
 	<pageHeader>
-		<band height="87">
+		<band height="68">
 			<image>
 				<reportElement x="10" y="8" width="280" height="60" uuid="8c1ee22b-4b4b-442c-bf74-5ee50f661100">
 					<printWhenExpression><![CDATA[$F{company-logo}.length()>0]]></printWhenExpression>
@@ -661,9 +680,9 @@
 				<imageExpression><![CDATA[$F{company-logo}]]></imageExpression>
 			</image>
 			<textField>
-				<reportElement x="10" y="71" width="535" height="12" forecolor="#808080" uuid="4b921473-3454-4b7f-bbc4-7880d2924e66"/>
-				<textElement>
-					<font size="8"/>
+				<reportElement x="305" y="8" width="240" height="60" forecolor="#808080" uuid="4b921473-3454-4b7f-bbc4-7880d2924e66"/>
+				<textElement textAlignment="Right">
+					<font size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{company-header}]]></textFieldExpression>
 			</textField>
@@ -749,42 +768,42 @@
 				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="12" y="18" width="304" height="11" forecolor="#808080" uuid="9a2b74c3-5558-4d60-bfa6-92531dc94a1e"/>
+				<reportElement x="12" y="13" width="304" height="11" forecolor="#808080" uuid="9a2b74c3-5558-4d60-bfa6-92531dc94a1e"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{company-street}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="12" y="30" width="304" height="11" forecolor="#808080" uuid="0784a45f-ad69-4fa1-998a-2c7653367bae"/>
+				<reportElement x="12" y="25" width="304" height="11" forecolor="#808080" uuid="0784a45f-ad69-4fa1-998a-2c7653367bae"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{company-zip}+" "+$F{company-city}+" "+$F{company-country}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="12" y="55" width="343" height="12" forecolor="#808080" uuid="9ad92684-1300-4f81-8aec-5308978e7ac5"/>
+				<reportElement x="12" y="49" width="343" height="12" forecolor="#808080" uuid="9ad92684-1300-4f81-8aec-5308978e7ac5"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA["T. "+ $F{company-phone}+" "+$F{company-email}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="12" y="6" width="304" height="11" forecolor="#010101" uuid="5e992491-7712-43a5-8ac6-15c05a34f106"/>
+				<reportElement x="12" y="1" width="304" height="11" forecolor="#010101" uuid="5e992491-7712-43a5-8ac6-15c05a34f106"/>
 				<textElement>
 					<font size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{company-name}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="12" y="42" width="304" height="11" forecolor="#808080" uuid="d3e1001e-bdb9-478b-b40f-49896a36b68e"/>
+				<reportElement x="12" y="37" width="304" height="11" forecolor="#808080" uuid="d3e1001e-bdb9-478b-b40f-49896a36b68e"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{company-vat_code}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{company-vat_code} ? $F{company-vat_code} : $F{company-identifier}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="12" y="77" width="529" height="10" forecolor="#808080" uuid="c69d2c5d-8ae4-439d-92aa-47bc1c78c257"/>
+				<reportElement x="12" y="62" width="529" height="28" forecolor="#808080" uuid="c69d2c5d-8ae4-439d-92aa-47bc1c78c257"/>
 				<textElement textAlignment="Center">
 					<font size="7"/>
 				</textElement>
