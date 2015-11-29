@@ -4,7 +4,7 @@
 #the full copyright notices and license terms.
 import unittest
 import trytond.tests.test_tryton
-from trytond.tests.test_tryton import test_view, test_depends
+from trytond.tests.test_tryton import test_depends
 
 
 class AccountInvoiceJreportTestCase(unittest.TestCase):
@@ -25,6 +25,6 @@ class AccountInvoiceJreportTestCase(unittest.TestCase):
 def suite():
     suite = trytond.tests.test_tryton.suite()
     suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
-        SurveyCase))
+        AccountInvoiceJreportTestCase))
     return suite
 
