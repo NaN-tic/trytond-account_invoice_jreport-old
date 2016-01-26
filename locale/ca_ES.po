@@ -92,7 +92,7 @@ msgstr "Total"
 
 msgctxt "jasper:account.invoice:"
 msgid "Untaxed"
-msgstr "Base imposable"
+msgstr "Base"
 
 msgctxt "jasper:account.invoice:"
 msgid "VAT"
