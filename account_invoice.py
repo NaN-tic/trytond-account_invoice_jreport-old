@@ -5,14 +5,15 @@ from trytond.pool import PoolMeta
 from trytond.modules.jasper_reports.jasper import JasperReport
 
 __all__ = ['Invoice', 'InvoiceReport']
-__metaclass__ = PoolMeta
 
 
 class InvoiceReport(JasperReport):
+    __metaclass__ = PoolMeta
     __name__ = 'account.invoice'
 
 
 class Invoice:
+    __metaclass__ = PoolMeta
     __name__ = 'account.invoice'
 
     def print_invoice(self):
