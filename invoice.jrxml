@@ -96,7 +96,7 @@
 		<fieldDescription><![CDATA[/data/record/company-company/party-party/name-name]]></fieldDescription>
 	</field>
 	<field name="company-vat_code" class="java.lang.String">
-		<fieldDescription><![CDATA[/data/record/company-company/party-party/vat_code-vat_code]]></fieldDescription>
+		<fieldDescription><![CDATA[/data/record/company-company/party-party/tax_identifier-tax_identifier/code-code]]></fieldDescription>
 	</field>
 	<field name="company-identifier" class="java.lang.String">
 		<fieldDescription><![CDATA[/data/record/company-company/party-party/identifier_code-identifier_code]]></fieldDescription>
@@ -156,7 +156,7 @@
 		<fieldDescription><![CDATA[/data/record/party_lang-party_lang]]></fieldDescription>
 	</field>
 	<field name="party-vat_code" class="java.lang.String">
-		<fieldDescription><![CDATA[/data/record/party-party/vat_code-vat_code]]></fieldDescription>
+		<fieldDescription><![CDATA[/data/record/party-party/tax_identifier-tax_identifier/code-code]]></fieldDescription>
 	</field>
 	<field name="party-identifier" class="java.lang.String">
 		<fieldDescription><![CDATA[/data/record/party-party/identifier_code-identifier_code]]></fieldDescription>
