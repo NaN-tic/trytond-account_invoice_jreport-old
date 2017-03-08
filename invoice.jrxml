@@ -131,6 +131,9 @@
 	<field name="company-invoice_qty" class="java.lang.Boolean">
 		<fieldDescription><![CDATA[/data/record/company-company/invoice_qty-invoice_qty]]></fieldDescription>
 	</field>
+	<field name="company-show_uom" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[/data/record/company-company/show_uom-show_uom]]></fieldDescription>
+	</field>
 	<field name="party-full_name" class="java.lang.String">
 		<fieldDescription><![CDATA[/data/record/party-party/full_name-full_name]]></fieldDescription>
 	</field>
@@ -236,6 +239,9 @@
 	<field name="line-tax-amount" class="java.lang.String">
 		<fieldDescription><![CDATA[/data/record/lines-lines/invoice_taxes-invoice_taxes/tax-tax/amount-amount]]></fieldDescription>
 	</field>
+	<field name="line-symbol" class="java.lang.String">
+		<fieldDescription><![CDATA[/data/record/lines-lines/unit-unit/symbol-symbol]]></fieldDescription>
+	</field>
 	<field name="symbol-symbol" class="java.lang.String">
 		<fieldDescription><![CDATA[/data/record/currency-currency/symbol-symbol]]></fieldDescription>
 	</field>
@@ -266,7 +272,7 @@
 		<groupHeader>
 			<band height="116">
 				<textField>
-					<reportElement x="57" y="104" width="234" height="10" uuid="c2c7d40b-b91b-464c-b6b4-f6846d6e2e31"/>
+					<reportElement x="75" y="104" width="234" height="10" uuid="c2c7d40b-b91b-464c-b6b4-f6846d6e2e31"/>
 					<textElement>
 						<font size="8"/>
 					</textElement>
@@ -700,7 +706,7 @@
 				<textFieldExpression><![CDATA[$F{line-note} ? $F{line-description}+"\n<style forecolor=\"#808080\">"+$F{line-note}+"</style>" : $F{line-description}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="57" y="2" width="310" height="12" uuid="8cd45fbc-1218-4cf5-b806-bb43ae9c4879">
+				<reportElement x="76" y="2" width="306" height="12" uuid="8cd45fbc-1218-4cf5-b806-bb43ae9c4879">
 					<printWhenExpression><![CDATA[$F{line-type} == "line"]]></printWhenExpression>
 				</reportElement>
 				<textElement markup="styled">
@@ -752,6 +758,15 @@
 					<font size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{line-tax-type} == 'percentage' ? $F{line-tax-rate}*100+"%" : $F{line-tax-amount} ? $F{line-tax-amount} : '']]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="56" y="3" width="20" height="10" uuid="03572804-5b4c-4d33-a6c9-c6a9249e28c1">
+					<printWhenExpression><![CDATA[$F{line-type} == "line" & $F{company-show_uom}]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{line-symbol}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
