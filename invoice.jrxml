@@ -274,28 +274,28 @@
 				<textField>
 					<reportElement x="75" y="104" width="234" height="10" uuid="c2c7d40b-b91b-464c-b6b4-f6846d6e2e31"/>
 					<textElement>
-						<font size="8"/>
+						<font size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[tr($V{L},"Description")]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="16" y="104" width="40" height="10" uuid="e76d2235-66e7-4b2f-bdcd-040d278bdf5d"/>
-					<textElement textAlignment="Center">
-						<font size="8"/>
+					<textElement textAlignment="Right">
+						<font size="8" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[tr($V{L},"Qtat.")]]></textFieldExpression>
+					<textFieldExpression><![CDATA[tr($V{L},"Qty")]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="369" y="104" width="50" height="10" uuid="3f773460-0745-4ba0-96ab-e1dfa90dc280"/>
 					<textElement textAlignment="Right">
-						<font size="8"/>
+						<font size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[tr($V{L},"Price")]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="490" y="104" width="48" height="10" uuid="a4d78f17-ce8b-4ee7-8477-6c03dc9fd71b"/>
 					<textElement textAlignment="Right">
-						<font size="8"/>
+						<font size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[tr($V{L},"Total")]]></textFieldExpression>
 				</textField>
@@ -335,7 +335,7 @@
 				<textField>
 					<reportElement x="424" y="104" width="41" height="10" uuid="f56afdfc-d236-4b76-bb62-e5f8415257dd"/>
 					<textElement textAlignment="Left">
-						<font size="8"/>
+						<font size="8" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[tr($V{L},"Tax Vat")]]></textFieldExpression>
 				</textField>
@@ -745,7 +745,7 @@
 				<reportElement x="16" y="2" width="40" height="12" uuid="d58b9b80-69a4-47c7-84d1-b55075f02ee9">
 					<printWhenExpression><![CDATA[$F{line-type} == "line"]]></printWhenExpression>
 				</reportElement>
-				<textElement textAlignment="Center">
+				<textElement textAlignment="Right">
 					<font size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{line-quantity} ? $F{company-invoice_qty} ? (int)Double.valueOf($F{line-quantity}.trim()).doubleValue() : Double.valueOf($F{line-quantity}.trim()).doubleValue() : '0']]></textFieldExpression>

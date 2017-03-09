@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -59,7 +59,7 @@ msgid "Pro-forma"
 msgstr "Pro-forma"
 
 msgctxt "jasper:account.invoice:"
-msgid "Qtat."
+msgid "Qty"
 msgstr "Qt."
 
 msgctxt "jasper:account.invoice:"
