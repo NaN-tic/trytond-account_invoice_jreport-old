@@ -131,6 +131,9 @@
 	<field name="company-invoice_qty" class="java.lang.Boolean">
 		<fieldDescription><![CDATA[/data/record/company-company/invoice_qty-invoice_qty]]></fieldDescription>
 	</field>
+	<field name="company-show_origins" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[/data/record/company-company/show_origins-show_origins]]></fieldDescription>
+	</field>
 	<field name="company-show_uom" class="java.lang.Boolean">
 		<fieldDescription><![CDATA[/data/record/company-company/show_uom-show_uom]]></fieldDescription>
 	</field>
@@ -382,7 +385,7 @@
 				</textField>
 				<textField isBlankWhenNull="true">
 					<reportElement x="64" y="74" width="236" height="12" uuid="03fa7508-be6d-40c7-a654-0f53d377cd6e">
-						<printWhenExpression><![CDATA[$F{origins-origins} != '']]></printWhenExpression>
+						<printWhenExpression><![CDATA[$F{origins-origins} != '' & $F{company-show_uom}]]></printWhenExpression>
 					</reportElement>
 					<textElement>
 						<font size="9"/>
@@ -391,7 +394,7 @@
 				</textField>
 				<textField>
 					<reportElement x="9" y="74" width="60" height="12" uuid="600cbb38-dade-48d4-98b4-fa0e3a578aae">
-						<printWhenExpression><![CDATA[$F{origins-origins} != '']]></printWhenExpression>
+						<printWhenExpression><![CDATA[$F{origins-origins} != '' & $F{company-show_uom}]]></printWhenExpression>
 					</reportElement>
 					<textElement>
 						<font size="9" isBold="true"/>
