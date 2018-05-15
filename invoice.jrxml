@@ -131,6 +131,9 @@
 	<field name="company-invoice_qty" class="java.lang.Boolean">
 		<fieldDescription><![CDATA[/data/record/company-company/invoice_qty-invoice_qty]]></fieldDescription>
 	</field>
+	<field name="company-rgpd" class="java.lang.String">
+		<fieldDescription><![CDATA[/data/record/company-company/rgpd-rgpd]]></fieldDescription>
+	</field>
 	<field name="party-full_name" class="java.lang.String">
 		<fieldDescription><![CDATA[/data/record/party-party/full_name-full_name]]></fieldDescription>
 	</field>
@@ -756,7 +759,7 @@
 		</band>
 	</detail>
 	<pageFooter>
-		<band height="91" splitType="Stretch">
+		<band height="105" splitType="Stretch">
 			<rectangle>
 				<reportElement x="529" y="5" width="100" height="20" forecolor="#FEFEFE" backcolor="#A0A0A0" uuid="fd25e181-05bb-4acd-ad99-4d282ff754d3"/>
 			</rectangle>
@@ -803,11 +806,11 @@
 				<textFieldExpression><![CDATA[$F{company-vat_code} ? $F{company-vat_code} : $F{company-identifier}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="12" y="62" width="529" height="28" forecolor="#808080" uuid="c69d2c5d-8ae4-439d-92aa-47bc1c78c257"/>
+				<reportElement x="12" y="62" width="529" height="40" forecolor="#808080" uuid="c69d2c5d-8ae4-439d-92aa-47bc1c78c257"/>
 				<textElement textAlignment="Center">
 					<font size="7"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{company-footer}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{company-footer}+($F{company-rgpd} ? '\n'+$F{company-rgpd} : '')]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageFooter>
