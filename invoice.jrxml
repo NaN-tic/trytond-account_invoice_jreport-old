@@ -137,7 +137,7 @@
 	<field name="company-show_uom" class="java.lang.Boolean">
 		<fieldDescription><![CDATA[/data/record/company-company/show_uom-show_uom]]></fieldDescription>
 	</field>
-	<field name="company-rgpd" class="java.lang.String">
+	<field name="company-rgpd" class="java.lang.Object">
 		<fieldDescription><![CDATA[/data/record/company-company/rgpd-rgpd]]></fieldDescription>
 	</field>
 	<field name="party-full_name" class="java.lang.String">
@@ -828,7 +828,7 @@
 				<textElement textAlignment="Center">
 					<font size="7"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{company-footer}+($F{company-rgpd} ? '\n'+$F{company-rgpd} : '')]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{company-footer}+($F{company-rgpd}.get($F{party-lang}) ? '\n'+$F{company-rgpd}.get($F{party-lang}) : '')]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageFooter>
