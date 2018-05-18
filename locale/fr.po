@@ -2,98 +2,98 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "jasper:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Base"
 msgstr "Base"
 
-msgctxt "jasper:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Credit Note"
 msgstr "Note de crédit"
 
-msgctxt "jasper:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Date"
 msgstr "Date"
 
-msgctxt "jasper:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Description"
 msgstr "Description"
 
-msgctxt "jasper:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "DTE."
 msgstr "Remise"
 
-msgctxt "jasper:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Invoice"
 msgstr "Facture"
 
-msgctxt "jasper:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Payment Term"
 msgstr "Conditions de paiement"
 
-msgctxt "jasper:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Payment Type"
 msgstr "Mode de paiement"
 
-msgctxt "jasper:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Price"
 msgstr "Prix"
 
-msgctxt "jasper:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Pro-forma"
 msgstr "Proforma"
 
-msgctxt "jasper:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Qtat."
 msgstr "Qté."
 
-msgctxt "jasper:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Quotation"
 msgstr "Devis"
 
-msgctxt "jasper:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Reference"
 msgstr "Référence"
 
-msgctxt "jasper:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Tax"
 msgstr "Taxe"
 
-msgctxt "jasper:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Tax Vat"
 msgstr "TVA Taxe"
 
-msgctxt "jasper:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Total"
 msgstr "Total"
 
-msgctxt "jasper:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Untaxed"
 msgstr "Hors taxe"
 
-msgctxt "jasper:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "VAT"
 msgstr "VAT"
 
-msgctxt "jasper:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Taxes"
 msgstr "Taxes"
 
-msgctxt "jasper:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Due dates"
 msgstr "Echéances"
 
-msgctxt "jasper:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Maturity date"
 msgstr "Echéance"
 
-msgctxt "jasper:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Debit"
 msgstr "Débit"
 
-msgctxt "jasper:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Origins"
 msgstr "Origines"
 
-msgctxt "jasper:account.invoice:"
+msgctxt "report:account.invoice:"
 msgid "Simplified Invoice"
 msgstr "Facture simplifiée"
