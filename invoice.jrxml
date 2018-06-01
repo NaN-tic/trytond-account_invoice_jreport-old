@@ -606,7 +606,7 @@
 							</jr:columnHeader>
 							<jr:columnFooter height="0" rowSpan="1"/>
 							<jr:detailCell height="24" rowSpan="1">
-								<textField isStretchWithOverflow="true" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
+								<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
 									<reportElement x="0" y="0" width="51" height="12" uuid="41e83f81-8ac9-4ff3-bcdb-02e3991c9389"/>
 									<textElement verticalAlignment="Middle"/>
 									<textFieldExpression><![CDATA[$F{symbol-symbol} == "€"
@@ -721,7 +721,7 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{payment_type-note}.get($F{party-lang})]]></textFieldExpression>
 				</textField>
-				<textField pattern="" isBlankWhenNull="false">
+				<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
 					<reportElement x="434" y="44" width="104" height="10" isRemoveLineWhenBlank="true" forecolor="#666666" uuid="eb66712d-3853-4d55-863e-ea6fd462bb91">
 						<printWhenExpression><![CDATA[$F{different_currencies}]]></printWhenExpression>
 					</reportElement>
@@ -730,27 +730,27 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$F{company_currency_symbol} == "€"
 ?
-    new DecimalFormat("#,##0.00", new DecimalFormatSymbols(new Locale("es", "ES"))).format($F{company_total_amount}) + " " + $F{company_currency_symbol}
+    $F{company_total_amount} + " " + $F{company_currency_symbol}
 :
-    $F{company_currency_symbol} + " " + new DecimalFormat("#,##0.00", new DecimalFormatSymbols(new Locale("es", "ES"))).format($F{company_total_amount})]]></textFieldExpression>
+    $F{company_currency_symbol} + " " + $F{company_total_amount}]]></textFieldExpression>
 				</textField>
-				<textField pattern="" isBlankWhenNull="false">
+				<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
 					<reportElement x="255" y="44" width="98" height="10" isRemoveLineWhenBlank="true" forecolor="#666666" uuid="2f36931b-7211-4240-856c-f81db02daa79">
 						<printWhenExpression><![CDATA[$F{different_currencies}]]></printWhenExpression>
 					</reportElement>
 					<textElement textAlignment="Left" verticalAlignment="Middle">
 						<font size="8" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[new DecimalFormat("#,##0.00", new DecimalFormatSymbols(new Locale("es", "ES"))).format($F{company_tax_amount})]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{company_tax_amount}]]></textFieldExpression>
 				</textField>
-				<textField pattern="" isBlankWhenNull="false">
+				<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
 					<reportElement x="10" y="44" width="98" height="10" isRemoveLineWhenBlank="true" forecolor="#666666" uuid="cb15544b-7eed-4896-92e1-541deb1cf0a4">
 						<printWhenExpression><![CDATA[$F{different_currencies}]]></printWhenExpression>
 					</reportElement>
 					<textElement textAlignment="Left" verticalAlignment="Middle">
 						<font size="8" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA[new DecimalFormat("#,##0.00", new DecimalFormatSymbols(new Locale("es", "ES"))).format($F{company_untaxed_amount})]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{company_untaxed_amount}]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupFooter>
