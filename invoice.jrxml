@@ -39,6 +39,21 @@
 		<field name="taxes-tax-amount" class="java.lang.String">
 			<fieldDescription><![CDATA[/data/record/taxes-taxes/tax-tax/amount-amount]]></fieldDescription>
 		</field>
+		<field name="different_currencies" class="java.lang.Boolean">
+			<fieldDescription><![CDATA[/data/record/different_currencies]]></fieldDescription>
+		</field>
+		<field name="company_taxes_amount" class="java.lang.Number">
+			<fieldDescription><![CDATA[/data/record/taxes/company_amount]]></fieldDescription>
+		</field>
+		<field name="company_taxes_base" class="java.lang.Number">
+			<fieldDescription><![CDATA[/data/record/taxes/company_base]]></fieldDescription>
+		</field>
+		<field name="symbol-symbol" class="java.lang.String">
+			<fieldDescription><![CDATA[/data/record/currency-currency/symbol-symbol]]></fieldDescription>
+		</field>
+		<field name="company_currency_symbol" class="java.lang.String">
+			<fieldDescription><![CDATA[/data/record/company/currency/symbol]]></fieldDescription>
+		</field>
 		<variable name="L" class="java.util.Locale">
 			<variableExpression><![CDATA[$F{party-lang} != null && $F{party-lang}.length() == 5 ? new Locale($F{party-lang}) : ( $F{party-lang} != null && $F{party-lang}.length() == 2 ? new Locale($F{party-lang}) : new Locale('en_US'))]]></variableExpression>
 			<initialValueExpression><![CDATA[$F{party-lang} != null && $F{party-lang}.length() == 5 ? new Locale($F{party-lang}) : ( $F{party-lang} != null && $F{party-lang}.length() == 2 ? new Locale($F{party-lang}) : new Locale('en_US'))]]></initialValueExpression>
@@ -260,6 +275,21 @@
 	<field name="taxes-id" class="java.lang.String">
 		<fieldDescription><![CDATA[/data/record/taxes-taxes/id]]></fieldDescription>
 	</field>
+	<field name="different_currencies" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[/data/record/different_currencies]]></fieldDescription>
+	</field>
+	<field name="company_untaxed_amount" class="java.lang.Number">
+		<fieldDescription><![CDATA[/data/record/company_untaxed_amount_cache]]></fieldDescription>
+	</field>
+	<field name="company_tax_amount" class="java.lang.Number">
+		<fieldDescription><![CDATA[/data/record/company_tax_amount_cache]]></fieldDescription>
+	</field>
+	<field name="company_total_amount" class="java.lang.Number">
+		<fieldDescription><![CDATA[/data/record/company_total_amount_cache]]></fieldDescription>
+	</field>
+	<field name="company_currency_symbol" class="java.lang.String">
+		<fieldDescription><![CDATA[/data/record/company/currency/symbol]]></fieldDescription>
+	</field>
 	<variable name="L" class="java.util.Locale" resetType="Page">
 		<variableExpression><![CDATA[$F{party-lang} != null && $F{party-lang}.length() == 5 ? new Locale($F{party-lang}) : ( $F{party-lang} != null && $F{party-lang}.length() == 2 ? new Locale($F{party-lang}) : 'en_US')]]></variableExpression>
 		<initialValueExpression><![CDATA[$F{party-lang} != null && $F{party-lang}.length() == 5 ? new Locale($F{party-lang}) : ( $F{party-lang} != null && $F{party-lang}.length() == 2 ? new Locale($F{party-lang}) : 'en_US' )]]></initialValueExpression>
@@ -398,24 +428,40 @@
 			</band>
 		</groupHeader>
 		<groupFooter>
-			<band height="162" splitType="Prevent">
+			<band height="174" splitType="Prevent">
 				<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="false">
-					<reportElement x="434" y="30" width="95" height="14" uuid="05b18839-fd5e-4786-a977-5ef1a341fa09"/>
-					<textElement textAlignment="Right">
+					<reportElement x="434" y="30" width="104" height="14" uuid="05b18839-fd5e-4786-a977-5ef1a341fa09"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="9" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{total_amount-total_amount} ? $F{total_amount-total_amount} : 0]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{symbol-symbol} == "€"
+?
+    (
+        $F{total_amount-total_amount} != null && $F{total_amount-total_amount} != ""
+        ?
+            $F{total_amount-total_amount}
+        :
+            0
+    ) + " " + $F{symbol-symbol}
+:
+    $F{symbol-symbol} + " " + (
+        $F{total_amount-total_amount} != null && $F{total_amount-total_amount} != ""
+        ?
+            $F{total_amount-total_amount}
+        :
+            0
+    )]]></textFieldExpression>
 				</textField>
 				<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="false">
 					<reportElement x="10" y="30" width="98" height="14" uuid="5f1b26d4-c154-44b2-b4fd-5c377b57477f"/>
-					<textElement textAlignment="Left">
+					<textElement textAlignment="Left" verticalAlignment="Middle">
 						<font size="9" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{untaxed_amount-untaxed_amount} ? $F{untaxed_amount-untaxed_amount} : 0]]></textFieldExpression>
 				</textField>
 				<textField pattern="#,##0.00;-#,##0.00" isBlankWhenNull="false">
 					<reportElement x="255" y="30" width="98" height="14" uuid="b45d62d6-f732-4783-8678-80d9c3111e44"/>
-					<textElement textAlignment="Left">
+					<textElement textAlignment="Left" verticalAlignment="Middle">
 						<font size="9" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{tax_amount-tax_amount} ? $F{tax_amount-tax_amount} : 0]]></textFieldExpression>
@@ -442,7 +488,7 @@
 					<textFieldExpression><![CDATA[tr($V{L},"Untaxed")]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement x="340" y="59" width="199" height="12" uuid="f98b73c2-40f5-4951-a74c-3c41ad8c3e4d">
+					<reportElement positionType="Float" x="340" y="71" width="199" height="12" uuid="f98b73c2-40f5-4951-a74c-3c41ad8c3e4d">
 						<printWhenExpression><![CDATA[$F{payment_term-name} != '']]></printWhenExpression>
 					</reportElement>
 					<textElement>
@@ -451,17 +497,10 @@
 					<textFieldExpression><![CDATA[tr($V{L},"Payment Term")+": "+$F{payment_term-name}.get($F{party-lang})]]></textFieldExpression>
 				</textField>
 				<line>
-					<reportElement x="10" y="44" width="530" height="1" uuid="02b33d2b-0ffe-421e-8cc8-51001eb87daa"/>
+					<reportElement positionType="Float" x="10" y="56" width="530" height="1" uuid="02b33d2b-0ffe-421e-8cc8-51001eb87daa"/>
 				</line>
-				<textField>
-					<reportElement x="531" y="29" width="8" height="14" uuid="cca3d2b4-8c8e-4002-be1d-86ff49d5192a"/>
-					<textElement>
-						<font isBold="true"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{symbol-symbol}]]></textFieldExpression>
-				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-					<reportElement x="10" y="121" width="531" height="36" isRemoveLineWhenBlank="true" uuid="953a6eb6-324b-4a19-b827-381bb75e1637"/>
+					<reportElement x="10" y="133" width="531" height="36" isRemoveLineWhenBlank="true" uuid="953a6eb6-324b-4a19-b827-381bb75e1637"/>
 					<textElement>
 						<font size="9"/>
 					</textElement>
@@ -471,7 +510,7 @@
 					<reportElement x="10" y="25" width="530" height="1" uuid="3b2441e0-d347-40a9-877e-5c359698a821"/>
 				</line>
 				<textField>
-					<reportElement x="340" y="74" width="199" height="12" uuid="cf0d63cf-238d-4158-9a90-d9f3202fa7a3">
+					<reportElement positionType="Float" x="340" y="86" width="199" height="12" uuid="cf0d63cf-238d-4158-9a90-d9f3202fa7a3">
 						<printWhenExpression><![CDATA[$F{payment_type-name}.get($F{party-lang}) != null]]></printWhenExpression>
 					</reportElement>
 					<textElement>
@@ -480,7 +519,7 @@
 					<textFieldExpression><![CDATA[tr($V{L},"Payment Type")+": "+$F{payment_type-name}.get($F{party-lang})]]></textFieldExpression>
 				</textField>
 				<componentElement>
-					<reportElement key="table 1" x="10" y="71" width="168" height="50" uuid="9bb63471-5005-4919-a92e-5b494fa8fd09">
+					<reportElement key="table 1" positionType="Float" x="10" y="83" width="168" height="50" uuid="9bb63471-5005-4919-a92e-5b494fa8fd09">
 						<property name="TRYTON_RELATIONS" value="taxes"/>
 						<printWhenExpression><![CDATA[$F{taxes-id}.length() > 0]]></printWhenExpression>
 					</reportElement>
@@ -507,10 +546,10 @@
 								</line>
 							</jr:columnHeader>
 							<jr:columnFooter height="0" rowSpan="1"/>
-							<jr:detailCell height="12" rowSpan="1">
+							<jr:detailCell height="24" rowSpan="1">
 								<textField isStretchWithOverflow="true" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
 									<reportElement x="2" y="0" width="50" height="12" uuid="7424f07c-807f-441e-b21b-21c3af2f075a"/>
-									<textElement>
+									<textElement verticalAlignment="Middle">
 										<font size="9"/>
 									</textElement>
 									<textFieldExpression><![CDATA[$F{taxes-tax-type} == 'percentage' ? $F{taxes-tax-rate}*100+"%" : $F{taxes-tax-amount} ? $F{taxes-tax-amount} : '']]></textFieldExpression>
@@ -533,13 +572,20 @@
 								</line>
 							</jr:columnHeader>
 							<jr:columnFooter height="0" rowSpan="1"/>
-							<jr:detailCell height="12" rowSpan="1">
+							<jr:detailCell height="24" rowSpan="1">
 								<textField pattern="#,##0.00" isBlankWhenNull="true">
 									<reportElement x="0" y="0" width="64" height="12" uuid="95ba9998-be52-47ee-80d1-b65a1bba8c25"/>
-									<textElement>
+									<textElement verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$F{taxes-base}]]></textFieldExpression>
+								</textField>
+								<textField pattern="#,##0.00" isBlankWhenNull="true">
+									<reportElement x="0" y="12" width="64" height="12" forecolor="#666666" uuid="60d29ea2-cba0-400d-b837-b72c053d95d7">
+										<printWhenExpression><![CDATA[$F{different_currencies}]]></printWhenExpression>
+									</reportElement>
+									<textElement verticalAlignment="Middle">
 										<font size="9"/>
 									</textElement>
-									<textFieldExpression><![CDATA[$F{taxes-base}]]></textFieldExpression>
+									<textFieldExpression><![CDATA[$F{company_taxes_base}]]></textFieldExpression>
 								</textField>
 							</jr:detailCell>
 						</jr:column>
@@ -559,20 +605,35 @@
 								</line>
 							</jr:columnHeader>
 							<jr:columnFooter height="0" rowSpan="1"/>
-							<jr:detailCell height="12" rowSpan="1">
+							<jr:detailCell height="24" rowSpan="1">
 								<textField isStretchWithOverflow="true" pattern="#,##0.00;-#,##0.00" isBlankWhenNull="true">
 									<reportElement x="0" y="0" width="51" height="12" uuid="41e83f81-8ac9-4ff3-bcdb-02e3991c9389"/>
-									<textElement>
+									<textElement verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$F{symbol-symbol} == "€"
+?
+    new DecimalFormat("#,##0.00", new DecimalFormatSymbols(new Locale("es", "ES"))).format($F{taxes-amount}) + " " + $F{symbol-symbol}
+:
+    $F{symbol-symbol} + " " + new DecimalFormat("#,##0.00", new DecimalFormatSymbols(new Locale("es", "ES"))).format($F{taxes-amount})]]></textFieldExpression>
+								</textField>
+								<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+									<reportElement x="0" y="12" width="51" height="12" forecolor="#666666" uuid="eae0dcbb-a3e0-45f5-8374-6f2189cdef76">
+										<printWhenExpression><![CDATA[$F{different_currencies}]]></printWhenExpression>
+									</reportElement>
+									<textElement verticalAlignment="Middle">
 										<font size="9"/>
 									</textElement>
-									<textFieldExpression><![CDATA[$F{taxes-amount}]]></textFieldExpression>
+									<textFieldExpression><![CDATA[$F{company_currency_symbol} == "€"
+?
+    new DecimalFormat("#,##0.00", new DecimalFormatSymbols(new Locale("es", "ES"))).format($F{company_taxes_amount}) + " " + $F{company_currency_symbol}
+:
+    $F{company_currency_symbol} + " " + new DecimalFormat("#,##0.00", new DecimalFormatSymbols(new Locale("es", "ES"))).format($F{company_taxes_amount})]]></textFieldExpression>
 								</textField>
 							</jr:detailCell>
 						</jr:column>
 					</jr:table>
 				</componentElement>
 				<componentElement>
-					<reportElement key="table2" x="189" y="71" width="140" height="50" uuid="2f90e824-d446-42fb-9825-dd28077c2519">
+					<reportElement key="table2" x="189" y="83" width="140" height="50" uuid="2f90e824-d446-42fb-9825-dd28077c2519">
 						<property name="TRYTON_RELATIONS" value="lines_to_pay"/>
 						<printWhenExpression><![CDATA[$F{maturity_date-maturity_date}.length() > 0]]></printWhenExpression>
 					</reportElement>
@@ -634,7 +695,7 @@
 					</jr:table>
 				</componentElement>
 				<textField>
-					<reportElement x="189" y="59" width="140" height="12" uuid="f4277fed-faf6-4521-8fd7-24496c595084">
+					<reportElement positionType="Float" x="189" y="71" width="140" height="12" uuid="f4277fed-faf6-4521-8fd7-24496c595084">
 						<printWhenExpression><![CDATA[$F{maturity_date-maturity_date}.length() > 0]]></printWhenExpression>
 					</reportElement>
 					<textElement>
@@ -643,7 +704,7 @@
 					<textFieldExpression><![CDATA[tr($V{L},"Due dates")]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="10" y="59" width="166" height="12" uuid="8d47cb48-94f8-4578-9e20-bc4568942364">
+					<reportElement positionType="Float" x="10" y="71" width="166" height="12" uuid="8d47cb48-94f8-4578-9e20-bc4568942364">
 						<printWhenExpression><![CDATA[$F{taxes-id}.length() > 0]]></printWhenExpression>
 					</reportElement>
 					<textElement>
@@ -652,13 +713,44 @@
 					<textFieldExpression><![CDATA[tr($V{L},"Taxes")]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement x="340" y="89" width="199" height="30" uuid="9c25389b-7a6f-40a7-885a-9149f1b07294">
+					<reportElement positionType="Float" x="340" y="101" width="199" height="30" uuid="9c25389b-7a6f-40a7-885a-9149f1b07294">
 						<printWhenExpression><![CDATA[$F{payment_type-note}.get($F{party-lang}) != null]]></printWhenExpression>
 					</reportElement>
 					<textElement>
 						<font size="9" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{payment_type-note}.get($F{party-lang})]]></textFieldExpression>
+				</textField>
+				<textField pattern="" isBlankWhenNull="false">
+					<reportElement x="434" y="44" width="104" height="10" isRemoveLineWhenBlank="true" forecolor="#666666" uuid="eb66712d-3853-4d55-863e-ea6fd462bb91">
+						<printWhenExpression><![CDATA[$F{different_currencies}]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{company_currency_symbol} == "€"
+?
+    new DecimalFormat("#,##0.00", new DecimalFormatSymbols(new Locale("es", "ES"))).format($F{company_total_amount}) + " " + $F{company_currency_symbol}
+:
+    $F{company_currency_symbol} + " " + new DecimalFormat("#,##0.00", new DecimalFormatSymbols(new Locale("es", "ES"))).format($F{company_total_amount})]]></textFieldExpression>
+				</textField>
+				<textField pattern="" isBlankWhenNull="false">
+					<reportElement x="255" y="44" width="98" height="10" isRemoveLineWhenBlank="true" forecolor="#666666" uuid="2f36931b-7211-4240-856c-f81db02daa79">
+						<printWhenExpression><![CDATA[$F{different_currencies}]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font size="8" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new DecimalFormat("#,##0.00", new DecimalFormatSymbols(new Locale("es", "ES"))).format($F{company_tax_amount})]]></textFieldExpression>
+				</textField>
+				<textField pattern="" isBlankWhenNull="false">
+					<reportElement x="10" y="44" width="98" height="10" isRemoveLineWhenBlank="true" forecolor="#666666" uuid="cb15544b-7eed-4896-92e1-541deb1cf0a4">
+						<printWhenExpression><![CDATA[$F{different_currencies}]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font size="8" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new DecimalFormat("#,##0.00", new DecimalFormatSymbols(new Locale("es", "ES"))).format($F{company_untaxed_amount})]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupFooter>
