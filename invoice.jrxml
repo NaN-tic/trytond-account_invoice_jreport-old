@@ -170,6 +170,9 @@
 	<field name="party-identifier" class="java.lang.String">
 		<fieldDescription><![CDATA[/data/record/party-party/identifier_code-identifier_code]]></fieldDescription>
 	</field>
+	<field name="party-tax_identifier" class="java.lang.String">
+		<fieldDescription><![CDATA[/data/record/party_tax_identifier-party_tax_identifier/code-code]]></fieldDescription>
+	</field>
 	<field name="invoice-full_address_lang" class="java.lang.String">
 		<fieldDescription><![CDATA[/data/record/invoice_address-invoice_address/full_address_lang-full_address_lang]]></fieldDescription>
 	</field>
@@ -362,7 +365,7 @@
 					<textElement textAlignment="Left">
 						<font size="9"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{party-vat_code} ? $F{party-vat_code} : $F{party-identifier}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[($F{party-tax_identifier} ?  $F{party-tax_identifier} : $F{party-vat_code} ? $F{party-vat_code} : $F{party-identifier})]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="10" y="35" width="60" height="12" uuid="dd409cc4-d552-476f-9753-3ea295c5686f">
@@ -375,7 +378,7 @@
 				</textField>
 				<textField>
 					<reportElement x="10" y="48" width="60" height="12" uuid="8bc1a99d-8748-4ba7-983a-b6c33e6e96ae">
-						<printWhenExpression><![CDATA[$F{party-vat_code} || $F{party-identifier}]]></printWhenExpression>
+						<printWhenExpression><![CDATA[$F{party-tax_identifier} || $F{party-vat_code} || $F{party-identifier}]]></printWhenExpression>
 					</reportElement>
 					<textElement>
 						<font size="9" isBold="true"/>
