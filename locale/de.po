@@ -1,0 +1,99 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "report:account.invoice:"
+msgid "Base"
+msgstr "Base"
+
+msgctxt "report:account.invoice:"
+msgid "Credit Note"
+msgstr "Gutschrift Rechnung"
+
+msgctxt "report:account.invoice:"
+msgid "DTE."
+msgstr "DTE."
+
+msgctxt "report:account.invoice:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "report:account.invoice:"
+msgid "Debit"
+msgstr "Deure"
+
+msgctxt "report:account.invoice:"
+msgid "Description"
+msgstr "Beschreibung"
+
+msgctxt "report:account.invoice:"
+msgid "Due dates"
+msgstr "Venciments"
+
+msgctxt "report:account.invoice:"
+msgid "Invoice"
+msgstr "Rechnung"
+
+msgctxt "report:account.invoice:"
+msgid "Maturity date"
+msgstr "Fälligkeitsdatum"
+
+msgctxt "report:account.invoice:"
+msgid "Origins"
+msgstr "Orígens"
+
+msgctxt "report:account.invoice:"
+msgid "Payment Term"
+msgstr "Zahlungsbedingung"
+
+msgctxt "report:account.invoice:"
+msgid "Payment Type"
+msgstr "Payment Type"
+
+msgctxt "report:account.invoice:"
+msgid "Price"
+msgstr "Preis"
+
+msgctxt "report:account.invoice:"
+msgid "Pro-forma"
+msgstr "Pro-forma"
+
+msgctxt "report:account.invoice:"
+msgid "Qty"
+msgstr "A."
+
+msgctxt "report:account.invoice:"
+msgid "Quotation"
+msgstr "Pressupost"
+
+msgctxt "report:account.invoice:"
+msgid "Reference"
+msgstr "Referencia"
+
+msgctxt "report:account.invoice:"
+msgid "Simplified Invoice"
+msgstr "Factura simplificada"
+
+msgctxt "report:account.invoice:"
+msgid "Tax"
+msgstr "Steuer"
+
+msgctxt "report:account.invoice:"
+msgid "Tax Vat"
+msgstr "Steuer"
+
+msgctxt "report:account.invoice:"
+msgid "Taxes"
+msgstr "Steuer"
+
+msgctxt "report:account.invoice:"
+msgid "Total"
+msgstr "Brutto"
+
+msgctxt "report:account.invoice:"
+msgid "Untaxed"
+msgstr "Netto"
+
+msgctxt "report:account.invoice:"
+msgid "VAT"
+msgstr "USt."
