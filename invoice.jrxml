@@ -461,7 +461,7 @@
 				</textField>
 				<textField isStretchWithOverflow="true">
 					<reportElement x="340" y="59" width="199" height="12" uuid="f98b73c2-40f5-4951-a74c-3c41ad8c3e4d">
-						<printWhenExpression><![CDATA[$F{payment_term-name} != '']]></printWhenExpression>
+						<printWhenExpression><![CDATA[$F{payment_term-name}.get($F{party-lang}) != null]]></printWhenExpression>
 					</reportElement>
 					<textElement>
 						<font size="9" isBold="false"/>
