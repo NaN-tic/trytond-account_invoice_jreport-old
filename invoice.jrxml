@@ -215,7 +215,7 @@
 	<field name="user-email" class="java.lang.String">
 		<fieldDescription><![CDATA[/data/record/create_uid-create_uid/email-email]]></fieldDescription>
 	</field>
-	<field name="line-quantity" class="java.lang.String">
+	<field name="line-quantity" class="java.lang.Number">
 		<fieldDescription><![CDATA[/data/record/lines-lines/quantity-quantity]]></fieldDescription>
 	</field>
 	<field name="line-note" class="java.lang.String">
@@ -756,14 +756,14 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{line-discount} ? "-"+ (int)Double.valueOf($F{line-discount}*100).doubleValue()+"%" : ""]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0.00#;#,-##0.00#" isBlankWhenNull="true">
 				<reportElement x="16" y="2" width="40" height="12" uuid="d58b9b80-69a4-47c7-84d1-b55075f02ee9">
 					<printWhenExpression><![CDATA[$F{line-type} == "line"]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Right">
 					<font size="9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{line-quantity} ? $F{company-invoice_qty} ? (int)Double.valueOf($F{line-quantity}.trim()).doubleValue() : Double.valueOf($F{line-quantity}.trim()).doubleValue() : '0']]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{line-quantity} ? $F{company-invoice_qty} ? (int)$F{line-quantity}+"" : $F{line-quantity} : '0']]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="424" y="2" width="41" height="12" uuid="2c99d035-234a-4f0c-b5db-99607b8b6ea7">
